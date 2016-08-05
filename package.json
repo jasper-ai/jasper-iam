@@ -20,11 +20,11 @@
     "package": "npm shrinkwrap --dev && node bin/fix-shrinkwrap && shrinkpack",
     "pretest": "npm run lint",
     "pretest:unit": "npm run lint",
-    "start": "npm run db:migrate:run && npm run db:seed:all && node lib/index.js",
+    "start": "npm run db:migrate:run && node lib/index.js",
     "test": "npm run db:migrate:run && npm run db:seed:run && nyc ava",
     "test:watch": "npm run db:migrate:run && npm run db:seed:run && nyc ava -- --watch",
     "test:coverage": "npm run test && nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "test:unit": "ava -- --match \"*.unit.test.js\""
+    "test:unit": "ava -- --match \"[Unit]\""
   },
   "repository": {
     "type": "git",
@@ -55,6 +55,8 @@
     "hapi-swagger": "^6.2.0",
     "highwire": "^1.1.6",
     "inert": "^4.0.1",
+    "jasper-hapi-healthcheck": "0.0.2",
+    "jasper-hapi-metrics": "0.0.1",
     "joi": "^9.0.4",
     "jsonwebtoken": "^7.1.7",
     "keymirror": "^0.1.1",

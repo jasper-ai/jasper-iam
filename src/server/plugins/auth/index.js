@@ -38,9 +38,9 @@ function basic (request, email, password, next) {
 function jwt (decoded, request, next) {
   Token
     .where({ cuid: decoded.cuid })
-    .fetch({ require: true, withRelated: ['users'] })
+    .fetch({ require: true, withRelated: ['user'] })
     .then(validateToken)
-    .then((token) => token.related('users'))
+    .then((token) => token.related('user'))
     .then((user) => next(null, true, {
       user,
       scope: getScopes(user.get('roles')),

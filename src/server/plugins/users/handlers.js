@@ -28,15 +28,31 @@ export function getUserHandler (req, reply) {
   new User({ id, active: true })
     .fetch({ require: true })
     .then((user) => reply({
+      user: user.omit(['_roles']),
       success: true,
-      user: user.id,
       timestamp: Date.now()
     }))
     .catch((error) => reply({
       success: false,
       error: error.name,
       message: error.message,
-      stack: error.stack,
+      timestamp: Date.now()
+    }))
+}
+
+export function getUsersHandler (req, reply) {
+  User.collection()
+    .query({ where: { active: true } })
+    .fetch()
+    .then((users) => reply({
+      users: users.omit(['_roles']),
+      success: true,
+      timestamp: Date.now()
+    }))
+    .catch((error) => reply({
+      success: false,
+      error: error.name,
+      message: error.message,
       timestamp: Date.now()
     }))
 }
@@ -57,7 +73,27 @@ export function getUserTokensHandler (req, reply) {
       success: false,
       error: error.name,
       message: error.message,
-      stack: error.stack,
+      timestamp: Date.now()
+    }))
+}
+
+export function deleteUserTokenHandler (req, reply) {
+  const { id, tokenId } = req.params
+
+  new User({ id, active: true })
+    .fetch({ require: true })
+    .then((user) => user.tokens()
+      .query({ where: { id: tokenId } })
+      .fetchOne())
+    .then((token) => token.destroy())
+    .then(() => reply({
+      success: true,
+      timestamp: Date.now()
+    }))
+    .catch((error) => reply({
+      success: false,
+      error: error.name,
+      message: error.message,
       timestamp: Date.now()
     }))
 }
@@ -74,7 +110,6 @@ export function createUserHandler (req, reply) {
       success: false,
       error: error.name,
       message: error.message,
-      stack: error.stack,
       timestamp: Date.now()
     }))
 }
@@ -94,7 +129,6 @@ export function patchUserHandler (req, reply) {
       success: false,
       error: error.name,
       message: error.message,
-      stack: error.stack,
       timestamp: Date.now()
     }))
 }
@@ -114,7 +148,6 @@ export function putUserHandler (req, reply) {
       success: false,
       error: error.name,
       message: error.message,
-      stack: error.stack,
       timestamp: Date.now()
     }))
 }
@@ -133,7 +166,6 @@ export function deleteUserHandler (req, reply) {
       success: false,
       error: error.name,
       message: error.message,
-      stack: error.stack,
       timestamp: Date.now()
     }))
 }

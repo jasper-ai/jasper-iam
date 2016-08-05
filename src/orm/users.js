@@ -56,7 +56,20 @@ const config = {
 
     return this.hasMany('Token')
       .query((queryBuilder) =>
-        queryBuilder.where('last_used', '>', thirtyDays))
+        queryBuilder
+          .where('last_used', '>', thirtyDays)
+          .andWhere({ active: true }))
+  },
+
+  inactiveTokens () {
+    const today = new Date()
+    const thirtyDays = new Date().setDate(today.getDate() - 30)
+
+    return this.hasMany('Token')
+      .query((queryBuilder) =>
+        queryBuilder
+          .where('last_used', '>', thirtyDays)
+          .orWhere({ active: false }))
   },
 
   tokens () {
@@ -73,7 +86,6 @@ const statics = {
   authenticate (email, password) {
     return new this({ email, active: true })
       .fetch({ require: true })
-      .catch((error) => console.log(error))
       .then((user) => comparePassword(password, user))
   }
 }

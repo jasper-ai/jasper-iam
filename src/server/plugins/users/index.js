@@ -4,6 +4,7 @@ import {
   createUserHandler,
   deleteUserHandler,
   getUserHandler,
+  getUsersHandler,
   getUserTokensHandler,
   deleteUserTokenHandler,
   patchUserHandler,
@@ -19,10 +20,23 @@ export const register = (server, options, next) => {
   server.route([
     {
       method: 'GET',
+      path: '/users',
+      config: {
+        tags: ['api'],
+        auth: {
+          scope: ['iam:users:read']
+        },
+        handler: getUsersHandler
+      }
+    },
+    {
+      method: 'GET',
       path: '/users/{id}',
       config: {
         tags: ['api'],
-        scope: ['iam:users:read'],
+        auth: {
+          scope: ['iam:users:read']
+        },
         handler: getUserHandler
       }
     },
@@ -31,7 +45,9 @@ export const register = (server, options, next) => {
       path: '/users',
       config: {
         tags: ['api'],
-        scope: ['iam:users:write'],
+        auth: {
+          scope: ['iam:users:write']
+        },
         validate: {
           payload: userPostPayloadSchema
         },
@@ -43,7 +59,9 @@ export const register = (server, options, next) => {
       path: '/users/{id}',
       config: {
         tags: ['api'],
-        scope: ['iam:users:write'],
+        auth: {
+          scope: ['iam:users:write']
+        },
         handler: patchUserHandler
       }
     },
@@ -52,7 +70,9 @@ export const register = (server, options, next) => {
       path: '/users/{id}',
       config: {
         tags: ['api'],
-        scope: ['iam:users:write'],
+        auth: {
+          scope: ['iam:users:write']
+        },
         handler: putUserHandler
       }
     },
@@ -61,7 +81,9 @@ export const register = (server, options, next) => {
       path: '/users/{id}',
       config: {
         tags: ['api'],
-        scope: ['iam:users:delete'],
+        auth: {
+          scope: ['iam:users:delete']
+        },
         handler: deleteUserHandler
       }
     },
@@ -70,7 +92,9 @@ export const register = (server, options, next) => {
       path: '/users/{id}/tokens',
       config: {
         tags: ['api'],
-        scope: ['iam:tokens:read'],
+        auth: {
+          scope: ['iam:tokens:read']
+        },
         handler: getUserTokensHandler
       }
     },
@@ -79,7 +103,9 @@ export const register = (server, options, next) => {
       path: '/users/{id}/tokens/{tokenId}',
       config: {
         tags: ['api'],
-        scope: ['iam:tokens:delete'],
+        auth: {
+          scope: ['iam:tokens:delete']
+        },
         handler: deleteUserTokenHandler
       }
     }

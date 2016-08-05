@@ -15,16 +15,14 @@ const developmentPlugins = [
   // app
   { register: require('./plugins/methods') },
   { register: require('./plugins/auth') },
-  { register: require('./plugins/users') },
-  { register: require('./plugins/tokens') }
+  { register: require('./plugins/users') }
 ]
 
 const testPlugins = [
   // app
   { register: require('./plugins/methods') },
   { register: require('./plugins/auth') },
-  { register: require('./plugins/users') },
-  { register: require('./plugins/tokens') }
+  { register: require('./plugins/users') }
 ]
 
 const productionPlugins = [
@@ -39,8 +37,7 @@ const productionPlugins = [
   // app
   { register: require('./plugins/methods') },
   { register: require('./plugins/auth') },
-  { register: require('./plugins/users') },
-  { register: require('./plugins/tokens') }
+  { register: require('./plugins/users') }
 ]
 
 let plugins

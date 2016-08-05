@@ -50,7 +50,6 @@ export function authBasicHandler (req, reply) {
       success: false,
       error: error.name,
       message: error.message,
-      stack: error.stack,
       timestamp: Date.now()
     }))
 }
@@ -74,7 +73,6 @@ export function authTokenHandler (req, reply) {
       success: false,
       error: error.name,
       message: error.message,
-      stack: error.stack,
       timestamp: Date.now()
     }))
 }
@@ -85,6 +83,11 @@ export function authenticateHandler (req, reply) {
   User
     .authenticate(email, password)
     .then((user) => {
+      // cull all non active tokens on successful login
+      user.inactiveTokens()
+        .fetch()
+        .then((tokens) => tokens.invokeThen('destroy'))
+
       return Token.tokenize(user.get('id'))
         .then((token) => {
           reply({
@@ -102,7 +105,6 @@ export function authenticateHandler (req, reply) {
       success: false,
       error: error.name,
       message: error.message,
-      stack: error.stack,
       timestamp: Date.now()
     }))
 }
@@ -131,7 +133,6 @@ export function passwordResetHandler (req, reply) {
       success: false,
       error: error.name,
       message: error.message,
-      stack: error.stack,
       timestamp: Date.now()
     }))
 }

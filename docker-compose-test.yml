@@ -30,6 +30,7 @@ services:
       - REDIS_PORT=6379
       - SECRET=secret
       - STATSD_HOST=statsdtest
+      - CODECOV_TOKEN=5bfef61d-4c62-4a4d-a5fb-379f62ec85c5
 
   cachetest:
     expose:

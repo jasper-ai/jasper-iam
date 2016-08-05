@@ -12,7 +12,7 @@ const config = {
     const today = new Date()
     const thirtyDays = new Date().setDate(today.getDate() - 30)
 
-    return this.get('last_updated') < thirtyDays
+    return this.get('last_used') < thirtyDays
   },
 
   user () {

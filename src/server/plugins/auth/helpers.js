@@ -19,9 +19,7 @@ export function validateToken (token) {
   }
 
   // update token `updatedAt` prop to track usage
-  return token.update({ lastActive: new Date() })
-    .then(token.reload)
-    .then(() => token)
+  return token.save({ last_used: new Date() }, { patch: true })
 }
 
 // get scopes for a user
