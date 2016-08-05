@@ -34,7 +34,6 @@ test:
           --env REDIS_HOST=$REDIS_HOST \
           --env REDIS_PORT=$REDIS_PORT \
           --env REDIS_PARTITION=$REDIS_PARTITION \
-          --env CODECLIMATE_REPO_TOKEN=$CODECLIMATE_REPO_TOKEN \
           --env CODECOV_TOKEN=$CODECOV_TOKEN \
           kkemple/jasper-iam:$CIRCLE_SHA1 npm run test:coverage
       fi

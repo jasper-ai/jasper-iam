@@ -2529,8 +2529,185 @@
     },
     "jasper-hapi-healthcheck": {
       "version": "0.0.4",
-      "from": "jasper-hapi-healthcheck@*",
+      "from": "jasper-hapi-healthcheck@0.0.4",
+      "resolved": "./node_shrinkwrap/jasper-hapi-healthcheck-0.0.4.tgz",
       "dependencies": {
+        "amdefine": {
+          "version": "1.0.0",
+          "from": "amdefine@>=0.0.4",
+          "resolved": "./node_shrinkwrap/amdefine-1.0.0.tgz"
+        },
+        "ansi-regex": {
+          "version": "2.0.0",
+          "from": "ansi-regex@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/ansi-regex-2.0.0.tgz"
+        },
+        "ansi-styles": {
+          "version": "2.2.1",
+          "from": "ansi-styles@>=2.2.1 <3.0.0",
+          "resolved": "./node_shrinkwrap/ansi-styles-2.2.1.tgz"
+        },
+        "babel-code-frame": {
+          "version": "6.11.0",
+          "from": "babel-code-frame@>=6.7.5 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-code-frame-6.11.0.tgz"
+        },
+        "babel-core": {
+          "version": "6.13.2",
+          "from": "babel-core@>=6.3.21 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-core-6.13.2.tgz",
+          "dependencies": {
+            "path-exists": {
+              "version": "1.0.0",
+              "from": "path-exists@>=1.0.0 <2.0.0",
+              "resolved": "./node_shrinkwrap/path-exists-1.0.0.tgz"
+            }
+          }
+        },
+        "babel-generator": {
+          "version": "6.11.4",
+          "from": "babel-generator@>=6.11.4 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-generator-6.11.4.tgz"
+        },
+        "babel-helpers": {
+          "version": "6.8.0",
+          "from": "babel-helpers@>=6.8.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-helpers-6.8.0.tgz"
+        },
+        "babel-messages": {
+          "version": "6.8.0",
+          "from": "babel-messages@>=6.8.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-messages-6.8.0.tgz"
+        },
+        "babel-register": {
+          "version": "6.11.6",
+          "from": "babel-register@>=6.11.6 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-register-6.11.6.tgz",
+          "dependencies": {
+            "path-exists": {
+              "version": "1.0.0",
+              "from": "path-exists@>=1.0.0 <2.0.0",
+              "resolved": "./node_shrinkwrap/path-exists-1.0.0.tgz"
+            },
+            "source-map": {
+              "version": "0.1.32",
+              "from": "source-map@0.1.32",
+              "resolved": "./node_shrinkwrap/source-map-0.1.32.tgz"
+            },
+            "source-map-support": {
+              "version": "0.2.10",
+              "from": "source-map-support@>=0.2.10 <0.3.0",
+              "resolved": "./node_shrinkwrap/source-map-support-0.2.10.tgz"
+            }
+          }
+        },
+        "babel-runtime": {
+          "version": "6.11.6",
+          "from": "babel-runtime@>=6.3.19 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-runtime-6.11.6.tgz"
+        },
+        "babel-template": {
+          "version": "6.9.0",
+          "from": "babel-template@>=6.9.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-template-6.9.0.tgz"
+        },
+        "babel-traverse": {
+          "version": "6.13.0",
+          "from": "babel-traverse@>=6.13.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-traverse-6.13.0.tgz"
+        },
+        "babel-types": {
+          "version": "6.13.0",
+          "from": "babel-types@>=6.13.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-types-6.13.0.tgz"
+        },
+        "babylon": {
+          "version": "6.8.4",
+          "from": "babylon@>=6.7.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babylon-6.8.4.tgz"
+        },
+        "balanced-match": {
+          "version": "0.4.2",
+          "from": "balanced-match@>=0.4.1 <0.5.0",
+          "resolved": "./node_shrinkwrap/balanced-match-0.4.2.tgz"
+        },
+        "brace-expansion": {
+          "version": "1.1.6",
+          "from": "brace-expansion@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/brace-expansion-1.1.6.tgz"
+        },
+        "chalk": {
+          "version": "1.1.3",
+          "from": "chalk@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/chalk-1.1.3.tgz"
+        },
+        "concat-map": {
+          "version": "0.0.1",
+          "from": "concat-map@0.0.1",
+          "resolved": "./node_shrinkwrap/concat-map-0.0.1.tgz"
+        },
+        "convert-source-map": {
+          "version": "1.3.0",
+          "from": "convert-source-map@>=1.2.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/convert-source-map-1.3.0.tgz"
+        },
+        "core-js": {
+          "version": "2.4.1",
+          "from": "core-js@>=2.4.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/core-js-2.4.1.tgz"
+        },
+        "d": {
+          "version": "0.1.1",
+          "from": "d@>=0.1.1 <0.2.0",
+          "resolved": "./node_shrinkwrap/d-0.1.1.tgz"
+        },
+        "debug": {
+          "version": "2.2.0",
+          "from": "debug@>=2.2.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/debug-2.2.0.tgz"
+        },
+        "detect-indent": {
+          "version": "3.0.1",
+          "from": "detect-indent@>=3.0.1 <4.0.0",
+          "resolved": "./node_shrinkwrap/detect-indent-3.0.1.tgz",
+          "dependencies": {
+            "minimist": {
+              "version": "1.2.0",
+              "from": "minimist@>=1.1.0 <2.0.0",
+              "resolved": "./node_shrinkwrap/minimist-1.2.0.tgz"
+            },
+            "repeating": {
+              "version": "1.1.3",
+              "from": "repeating@>=1.1.0 <2.0.0",
+              "resolved": "./node_shrinkwrap/repeating-1.1.3.tgz"
+            }
+          }
+        },
+        "es5-ext": {
+          "version": "0.10.12",
+          "from": "es5-ext@>=0.10.11 <0.11.0",
+          "resolved": "./node_shrinkwrap/es5-ext-0.10.12.tgz"
+        },
+        "es6-iterator": {
+          "version": "2.0.0",
+          "from": "es6-iterator@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/es6-iterator-2.0.0.tgz"
+        },
+        "es6-symbol": {
+          "version": "3.1.0",
+          "from": "es6-symbol@>=3.1.0 <3.2.0",
+          "resolved": "./node_shrinkwrap/es6-symbol-3.1.0.tgz"
+        },
+        "escape-string-regexp": {
+          "version": "1.0.5",
+          "from": "escape-string-regexp@>=1.0.2 <2.0.0",
+          "resolved": "./node_shrinkwrap/escape-string-regexp-1.0.5.tgz"
+        },
+        "esutils": {
+          "version": "2.0.2",
+          "from": "esutils@>=2.0.2 <3.0.0",
+          "resolved": "./node_shrinkwrap/esutils-2.0.2.tgz"
+        },
         "fsevents": {
           "version": "1.0.14",
           "from": "fsevents@>=1.0.0 <2.0.0",
@@ -3138,18 +3315,469 @@
             }
           }
         },
+        "get-stdin": {
+          "version": "4.0.1",
+          "from": "get-stdin@>=4.0.1 <5.0.0",
+          "resolved": "./node_shrinkwrap/get-stdin-4.0.1.tgz"
+        },
+        "globals": {
+          "version": "8.18.0",
+          "from": "globals@>=8.3.0 <9.0.0",
+          "resolved": "./node_shrinkwrap/globals-8.18.0.tgz"
+        },
+        "has-ansi": {
+          "version": "2.0.0",
+          "from": "has-ansi@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/has-ansi-2.0.0.tgz"
+        },
+        "home-or-tmp": {
+          "version": "1.0.0",
+          "from": "home-or-tmp@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/home-or-tmp-1.0.0.tgz"
+        },
+        "invariant": {
+          "version": "2.2.1",
+          "from": "invariant@>=2.2.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/invariant-2.2.1.tgz"
+        },
+        "is-finite": {
+          "version": "1.0.1",
+          "from": "is-finite@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/is-finite-1.0.1.tgz"
+        },
+        "js-tokens": {
+          "version": "2.0.0",
+          "from": "js-tokens@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/js-tokens-2.0.0.tgz"
+        },
+        "json5": {
+          "version": "0.4.0",
+          "from": "json5@>=0.4.0 <0.5.0",
+          "resolved": "./node_shrinkwrap/json5-0.4.0.tgz"
+        },
+        "lodash": {
+          "version": "4.14.1",
+          "from": "lodash@>=4.2.0 <5.0.0",
+          "resolved": "./node_shrinkwrap/lodash-4.14.1.tgz"
+        },
+        "loose-envify": {
+          "version": "1.2.0",
+          "from": "loose-envify@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/loose-envify-1.2.0.tgz",
+          "dependencies": {
+            "js-tokens": {
+              "version": "1.0.3",
+              "from": "js-tokens@>=1.0.1 <2.0.0",
+              "resolved": "./node_shrinkwrap/js-tokens-1.0.3.tgz"
+            }
+          }
+        },
+        "minimatch": {
+          "version": "3.0.2",
+          "from": "minimatch@>=3.0.2 <4.0.0",
+          "resolved": "./node_shrinkwrap/minimatch-3.0.2.tgz"
+        },
+        "minimist": {
+          "version": "0.0.8",
+          "from": "minimist@0.0.8",
+          "resolved": "./node_shrinkwrap/minimist-0.0.8.tgz"
+        },
+        "mkdirp": {
+          "version": "0.5.1",
+          "from": "mkdirp@>=0.5.1 <0.6.0",
+          "resolved": "./node_shrinkwrap/mkdirp-0.5.1.tgz"
+        },
+        "ms": {
+          "version": "0.7.1",
+          "from": "ms@>=0.7.1 <0.8.0",
+          "resolved": "./node_shrinkwrap/ms-0.7.1.tgz"
+        },
         "nan": {
           "version": "2.4.0",
           "from": "nan@>=2.3.0 <3.0.0",
           "resolved": "./node_shrinkwrap/nan-2.4.0.tgz"
+        },
+        "number-is-nan": {
+          "version": "1.0.0",
+          "from": "number-is-nan@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/number-is-nan-1.0.0.tgz"
+        },
+        "os-tmpdir": {
+          "version": "1.0.1",
+          "from": "os-tmpdir@>=1.0.1 <2.0.0",
+          "resolved": "./node_shrinkwrap/os-tmpdir-1.0.1.tgz"
+        },
+        "path-is-absolute": {
+          "version": "1.0.0",
+          "from": "path-is-absolute@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/path-is-absolute-1.0.0.tgz"
+        },
+        "private": {
+          "version": "0.1.6",
+          "from": "private@>=0.1.6 <0.2.0",
+          "resolved": "./node_shrinkwrap/private-0.1.6.tgz"
+        },
+        "regenerator-runtime": {
+          "version": "0.9.5",
+          "from": "regenerator-runtime@>=0.9.5 <0.10.0",
+          "resolved": "./node_shrinkwrap/regenerator-runtime-0.9.5.tgz"
+        },
+        "shebang-regex": {
+          "version": "1.0.0",
+          "from": "shebang-regex@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/shebang-regex-1.0.0.tgz"
+        },
+        "slash": {
+          "version": "1.0.0",
+          "from": "slash@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/slash-1.0.0.tgz"
+        },
+        "source-map": {
+          "version": "0.5.6",
+          "from": "source-map@>=0.5.0 <0.6.0",
+          "resolved": "./node_shrinkwrap/source-map-0.5.6.tgz"
+        },
+        "strip-ansi": {
+          "version": "3.0.1",
+          "from": "strip-ansi@>=3.0.1 <4.0.0",
+          "resolved": "./node_shrinkwrap/strip-ansi-3.0.1.tgz"
+        },
+        "supports-color": {
+          "version": "2.0.0",
+          "from": "supports-color@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/supports-color-2.0.0.tgz"
+        },
+        "to-fast-properties": {
+          "version": "1.0.2",
+          "from": "to-fast-properties@>=1.0.1 <2.0.0",
+          "resolved": "./node_shrinkwrap/to-fast-properties-1.0.2.tgz"
+        },
+        "user-home": {
+          "version": "1.1.1",
+          "from": "user-home@>=1.1.1 <2.0.0",
+          "resolved": "./node_shrinkwrap/user-home-1.1.1.tgz"
         }
-      },
-      "resolved": "./node_shrinkwrap/jasper-hapi-healthcheck-0.0.4.tgz"
+      }
     },
     "jasper-hapi-metrics": {
       "version": "0.0.3",
-      "from": "jasper-hapi-metrics@*",
-      "resolved": "./node_shrinkwrap/jasper-hapi-metrics-0.0.3.tgz"
+      "from": "jasper-hapi-metrics@0.0.3",
+      "resolved": "./node_shrinkwrap/jasper-hapi-metrics-0.0.3.tgz",
+      "dependencies": {
+        "amdefine": {
+          "version": "1.0.0",
+          "from": "amdefine@>=0.0.4",
+          "resolved": "./node_shrinkwrap/amdefine-1.0.0.tgz"
+        },
+        "ansi-regex": {
+          "version": "2.0.0",
+          "from": "ansi-regex@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/ansi-regex-2.0.0.tgz"
+        },
+        "ansi-styles": {
+          "version": "2.2.1",
+          "from": "ansi-styles@>=2.2.1 <3.0.0",
+          "resolved": "./node_shrinkwrap/ansi-styles-2.2.1.tgz"
+        },
+        "babel-code-frame": {
+          "version": "6.11.0",
+          "from": "babel-code-frame@>=6.7.5 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-code-frame-6.11.0.tgz"
+        },
+        "babel-core": {
+          "version": "6.13.2",
+          "from": "babel-core@>=6.3.21 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-core-6.13.2.tgz",
+          "dependencies": {
+            "path-exists": {
+              "version": "1.0.0",
+              "from": "path-exists@>=1.0.0 <2.0.0",
+              "resolved": "./node_shrinkwrap/path-exists-1.0.0.tgz"
+            }
+          }
+        },
+        "babel-generator": {
+          "version": "6.11.4",
+          "from": "babel-generator@>=6.11.4 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-generator-6.11.4.tgz"
+        },
+        "babel-helpers": {
+          "version": "6.8.0",
+          "from": "babel-helpers@>=6.8.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-helpers-6.8.0.tgz"
+        },
+        "babel-messages": {
+          "version": "6.8.0",
+          "from": "babel-messages@>=6.8.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-messages-6.8.0.tgz"
+        },
+        "babel-register": {
+          "version": "6.11.6",
+          "from": "babel-register@>=6.11.6 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-register-6.11.6.tgz",
+          "dependencies": {
+            "path-exists": {
+              "version": "1.0.0",
+              "from": "path-exists@>=1.0.0 <2.0.0",
+              "resolved": "./node_shrinkwrap/path-exists-1.0.0.tgz"
+            },
+            "source-map": {
+              "version": "0.1.32",
+              "from": "source-map@0.1.32",
+              "resolved": "./node_shrinkwrap/source-map-0.1.32.tgz"
+            },
+            "source-map-support": {
+              "version": "0.2.10",
+              "from": "source-map-support@>=0.2.10 <0.3.0",
+              "resolved": "./node_shrinkwrap/source-map-support-0.2.10.tgz"
+            }
+          }
+        },
+        "babel-runtime": {
+          "version": "6.11.6",
+          "from": "babel-runtime@>=6.3.19 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-runtime-6.11.6.tgz"
+        },
+        "babel-template": {
+          "version": "6.9.0",
+          "from": "babel-template@>=6.9.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-template-6.9.0.tgz"
+        },
+        "babel-traverse": {
+          "version": "6.13.0",
+          "from": "babel-traverse@>=6.13.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-traverse-6.13.0.tgz"
+        },
+        "babel-types": {
+          "version": "6.13.0",
+          "from": "babel-types@>=6.13.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-types-6.13.0.tgz"
+        },
+        "babylon": {
+          "version": "6.8.4",
+          "from": "babylon@>=6.7.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babylon-6.8.4.tgz"
+        },
+        "balanced-match": {
+          "version": "0.4.2",
+          "from": "balanced-match@>=0.4.1 <0.5.0",
+          "resolved": "./node_shrinkwrap/balanced-match-0.4.2.tgz"
+        },
+        "brace-expansion": {
+          "version": "1.1.6",
+          "from": "brace-expansion@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/brace-expansion-1.1.6.tgz"
+        },
+        "chalk": {
+          "version": "1.1.3",
+          "from": "chalk@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/chalk-1.1.3.tgz"
+        },
+        "concat-map": {
+          "version": "0.0.1",
+          "from": "concat-map@0.0.1",
+          "resolved": "./node_shrinkwrap/concat-map-0.0.1.tgz"
+        },
+        "convert-source-map": {
+          "version": "1.3.0",
+          "from": "convert-source-map@>=1.2.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/convert-source-map-1.3.0.tgz"
+        },
+        "core-js": {
+          "version": "2.4.1",
+          "from": "core-js@>=2.4.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/core-js-2.4.1.tgz"
+        },
+        "d": {
+          "version": "0.1.1",
+          "from": "d@>=0.1.1 <0.2.0",
+          "resolved": "./node_shrinkwrap/d-0.1.1.tgz"
+        },
+        "debug": {
+          "version": "2.2.0",
+          "from": "debug@>=2.2.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/debug-2.2.0.tgz"
+        },
+        "detect-indent": {
+          "version": "3.0.1",
+          "from": "detect-indent@>=3.0.1 <4.0.0",
+          "resolved": "./node_shrinkwrap/detect-indent-3.0.1.tgz",
+          "dependencies": {
+            "minimist": {
+              "version": "1.2.0",
+              "from": "minimist@>=1.1.0 <2.0.0",
+              "resolved": "./node_shrinkwrap/minimist-1.2.0.tgz"
+            },
+            "repeating": {
+              "version": "1.1.3",
+              "from": "repeating@>=1.1.0 <2.0.0",
+              "resolved": "./node_shrinkwrap/repeating-1.1.3.tgz"
+            }
+          }
+        },
+        "es5-ext": {
+          "version": "0.10.12",
+          "from": "es5-ext@>=0.10.11 <0.11.0",
+          "resolved": "./node_shrinkwrap/es5-ext-0.10.12.tgz"
+        },
+        "es6-iterator": {
+          "version": "2.0.0",
+          "from": "es6-iterator@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/es6-iterator-2.0.0.tgz"
+        },
+        "es6-symbol": {
+          "version": "3.1.0",
+          "from": "es6-symbol@>=3.1.0 <3.2.0",
+          "resolved": "./node_shrinkwrap/es6-symbol-3.1.0.tgz"
+        },
+        "escape-string-regexp": {
+          "version": "1.0.5",
+          "from": "escape-string-regexp@>=1.0.2 <2.0.0",
+          "resolved": "./node_shrinkwrap/escape-string-regexp-1.0.5.tgz"
+        },
+        "esutils": {
+          "version": "2.0.2",
+          "from": "esutils@>=2.0.2 <3.0.0",
+          "resolved": "./node_shrinkwrap/esutils-2.0.2.tgz"
+        },
+        "get-stdin": {
+          "version": "4.0.1",
+          "from": "get-stdin@>=4.0.1 <5.0.0",
+          "resolved": "./node_shrinkwrap/get-stdin-4.0.1.tgz"
+        },
+        "globals": {
+          "version": "8.18.0",
+          "from": "globals@>=8.3.0 <9.0.0",
+          "resolved": "./node_shrinkwrap/globals-8.18.0.tgz"
+        },
+        "has-ansi": {
+          "version": "2.0.0",
+          "from": "has-ansi@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/has-ansi-2.0.0.tgz"
+        },
+        "home-or-tmp": {
+          "version": "1.0.0",
+          "from": "home-or-tmp@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/home-or-tmp-1.0.0.tgz"
+        },
+        "invariant": {
+          "version": "2.2.1",
+          "from": "invariant@>=2.2.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/invariant-2.2.1.tgz"
+        },
+        "is-finite": {
+          "version": "1.0.1",
+          "from": "is-finite@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/is-finite-1.0.1.tgz"
+        },
+        "js-tokens": {
+          "version": "2.0.0",
+          "from": "js-tokens@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/js-tokens-2.0.0.tgz"
+        },
+        "json5": {
+          "version": "0.4.0",
+          "from": "json5@>=0.4.0 <0.5.0",
+          "resolved": "./node_shrinkwrap/json5-0.4.0.tgz"
+        },
+        "lodash": {
+          "version": "4.14.1",
+          "from": "lodash@>=4.2.0 <5.0.0",
+          "resolved": "./node_shrinkwrap/lodash-4.14.1.tgz"
+        },
+        "loose-envify": {
+          "version": "1.2.0",
+          "from": "loose-envify@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/loose-envify-1.2.0.tgz",
+          "dependencies": {
+            "js-tokens": {
+              "version": "1.0.3",
+              "from": "js-tokens@>=1.0.1 <2.0.0",
+              "resolved": "./node_shrinkwrap/js-tokens-1.0.3.tgz"
+            }
+          }
+        },
+        "minimatch": {
+          "version": "3.0.2",
+          "from": "minimatch@>=3.0.2 <4.0.0",
+          "resolved": "./node_shrinkwrap/minimatch-3.0.2.tgz"
+        },
+        "minimist": {
+          "version": "0.0.8",
+          "from": "minimist@0.0.8",
+          "resolved": "./node_shrinkwrap/minimist-0.0.8.tgz"
+        },
+        "mkdirp": {
+          "version": "0.5.1",
+          "from": "mkdirp@>=0.5.1 <0.6.0",
+          "resolved": "./node_shrinkwrap/mkdirp-0.5.1.tgz"
+        },
+        "ms": {
+          "version": "0.7.1",
+          "from": "ms@0.7.1",
+          "resolved": "./node_shrinkwrap/ms-0.7.1.tgz"
+        },
+        "number-is-nan": {
+          "version": "1.0.0",
+          "from": "number-is-nan@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/number-is-nan-1.0.0.tgz"
+        },
+        "os-tmpdir": {
+          "version": "1.0.1",
+          "from": "os-tmpdir@>=1.0.1 <2.0.0",
+          "resolved": "./node_shrinkwrap/os-tmpdir-1.0.1.tgz"
+        },
+        "path-is-absolute": {
+          "version": "1.0.0",
+          "from": "path-is-absolute@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/path-is-absolute-1.0.0.tgz"
+        },
+        "private": {
+          "version": "0.1.6",
+          "from": "private@>=0.1.6 <0.2.0",
+          "resolved": "./node_shrinkwrap/private-0.1.6.tgz"
+        },
+        "regenerator-runtime": {
+          "version": "0.9.5",
+          "from": "regenerator-runtime@>=0.9.5 <0.10.0",
+          "resolved": "./node_shrinkwrap/regenerator-runtime-0.9.5.tgz"
+        },
+        "shebang-regex": {
+          "version": "1.0.0",
+          "from": "shebang-regex@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/shebang-regex-1.0.0.tgz"
+        },
+        "slash": {
+          "version": "1.0.0",
+          "from": "slash@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/slash-1.0.0.tgz"
+        },
+        "source-map": {
+          "version": "0.5.6",
+          "from": "source-map@>=0.5.0 <0.6.0",
+          "resolved": "./node_shrinkwrap/source-map-0.5.6.tgz"
+        },
+        "strip-ansi": {
+          "version": "3.0.1",
+          "from": "strip-ansi@>=3.0.1 <4.0.0",
+          "resolved": "./node_shrinkwrap/strip-ansi-3.0.1.tgz"
+        },
+        "supports-color": {
+          "version": "2.0.0",
+          "from": "supports-color@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/supports-color-2.0.0.tgz"
+        },
+        "to-fast-properties": {
+          "version": "1.0.2",
+          "from": "to-fast-properties@>=1.0.1 <2.0.0",
+          "resolved": "./node_shrinkwrap/to-fast-properties-1.0.2.tgz"
+        },
+        "user-home": {
+          "version": "1.1.1",
+          "from": "user-home@>=1.1.1 <2.0.0",
+          "resolved": "./node_shrinkwrap/user-home-1.1.1.tgz"
+        }
+      }
     },
     "jodid25519": {
       "version": "1.0.2",
