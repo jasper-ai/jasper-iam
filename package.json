@@ -1,0 +1,100 @@
+{
+  "name": "jasper-iam",
+  "version": "0.0.1",
+  "description": "Identity and auth management for Jasper, a personal assistant bot",
+  "main": "lib/index.js",
+  "bin": {
+    "jasper-iam": "bin/repl"
+  },
+  "scripts": {
+    "audit": "nsp check",
+    "compile": "rimraf lib && babel src --out-dir lib --source-maps inline",
+    "compile:watch": "rimraf lib && babel src --watch --out-dir lib --source-maps inline",
+    "db:migrate:run": "knex migrate:latest",
+    "db:migrate:rollback": "knex migrate:rollback",
+    "db:migrate:create": "knex migrate:make",
+    "db:seed:run": "knex seed:run",
+    "db:seed:create": "knex seed:create",
+    "dev": "npm run db:migrate:run && npm run db:seed:run && npm run compile:watch & sleep 10 && nodemon --watch lib lib/index.js | pino",
+    "lint": "standard \"src/**/*.js\"",
+    "package": "npm shrinkwrap --dev && node bin/fix-shrinkwrap && shrinkpack",
+    "pretest": "npm run lint",
+    "pretest:unit": "npm run lint",
+    "start": "npm run db:migrate:run && npm run db:seed:all && node lib/index.js",
+    "test": "npm run db:migrate:run && npm run db:seed:run && nyc ava",
+    "test:watch": "npm run db:migrate:run && npm run db:seed:run && nyc ava -- --watch",
+    "test:coverage": "npm run test && nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "test:unit": "ava -- --match \"*.unit.test.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kkemple/jasper-iam.git"
+  },
+  "keywords": [
+    "bot",
+    "ai",
+    "assistant",
+    "jasper",
+    "integrations"
+  ],
+  "author": "kurtiskemple@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kkemple/jasper-iam/issues"
+  },
+  "homepage": "https://github.com/kkemple/jasper-iam#readme",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "bookshelf": "^0.10.0",
+    "cuid": "^1.3.8",
+    "hapi": "^13.5.3",
+    "hapi-auth-basic": "^4.0.0",
+    "hapi-auth-jwt2": "^7.0.1",
+    "hapi-pino": "^1.2.0",
+    "hapi-statsd": "^5.0.1",
+    "hapi-swagger": "^6.2.0",
+    "highwire": "^1.1.6",
+    "inert": "^4.0.1",
+    "joi": "^9.0.4",
+    "jsonwebtoken": "^7.1.7",
+    "keymirror": "^0.1.1",
+    "knex": "^0.11.9",
+    "lodash.assign": "^4.1.0",
+    "lodash.flatten": "^4.3.0",
+    "lodash.uniq": "^4.4.0",
+    "nodemailer": "^2.5.0",
+    "nodemailer-mailgun-transport": "^1.0.1",
+    "pg": "^6.0.3",
+    "pino": "^2.7.5",
+    "vision": "^4.1.0"
+  },
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "babel-cli": "^6.11.4",
+    "babel-preset-es2015": "^6.0.14",
+    "babel-register": "^6.11.6",
+    "codecov": "^1.0.1",
+    "nock": "^8.0.0",
+    "nodemon": "^1.8.1",
+    "nsp": "^2.6.1",
+    "nyc": "^7.1.0",
+    "rimraf": "^2.5.4",
+    "shrinkpack": "^0.13.1",
+    "sinon": "^1.17.1",
+    "standard": "^7.1.2"
+  },
+  "optionalDependencies": {
+    "fsevents": "^1.0.0"
+  },
+  "ava": {
+    "files": [
+      "src/**/*.test.js"
+    ],
+    "failFast": true,
+    "tap": true,
+    "babel": "inherit",
+    "require": [
+      "babel-register"
+    ]
+  }
+}

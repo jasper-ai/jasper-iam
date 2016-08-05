@@ -1,0 +1,49 @@
+version: '2'
+services:
+  jasper-iam:
+    build: .
+    command: npm run dev
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - cache
+      - db
+      - statsd
+    links:
+      - cache
+      - db
+      - statsd
+    env_file: .env
+    environment:
+      - PORT=3000
+      - DATABASE_NAME=jasper
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_ACCESS_KEY=jasper
+      - NODE_ENV=development
+      - REDIS_HOST=cache
+      - REDIS_PARTITION=jasper
+      - REDIS_PORT=6379
+      - SECRET=secret
+      - STATSD_HOST=statsd
+  cache:
+    expose:
+      - 6379
+    image: redis:latest
+  db:
+    environment:
+      - POSTGRES_DB=jasper
+      - POSTGRES_PASSWORD=jasper
+    expose:
+      - 5432
+    image: postgres:latest
+  statsd:
+    expose:
+      - 80
+      - 8125/udp
+      - 8126
+    image: hopsoft/graphite-statsd:latest
+    restart: always

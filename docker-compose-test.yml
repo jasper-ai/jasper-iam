@@ -1,0 +1,53 @@
+version: '2'
+services:
+  jasper-iam-test:
+    build:
+      context: .
+      dockerfile: Dockerfile-test
+    command: npm run test:coverage
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - cachetest
+      - dbtest
+      - statsdtest
+    links:
+      - cachetest
+      - dbtest
+      - statsdtest
+    env_file: .env
+    environment:
+      - DATABASE_NAME=test
+      - DATABASE_HOST=dbtest
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_ACCESS_KEY=test
+      - NODE_ENV=test
+      - REDIS_HOST=cachetest
+      - REDIS_PARTITION=test
+      - REDIS_PORT=6379
+      - SECRET=secret
+      - STATSD_HOST=statsdtest
+
+  cachetest:
+    expose:
+      - 6379
+    image: redis:latest
+
+  dbtest:
+    environment:
+      - POSTGRES_DB=test
+      - POSTGRES_PASSWORD=test
+    expose:
+      - 5432
+    image: postgres:latest
+
+  statsdtest:
+    expose:
+      - 80
+      - 8125/udp
+      - 8126
+    image: hopsoft/graphite-statsd:latest
+    restart: always

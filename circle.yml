@@ -1,0 +1,80 @@
+machine:
+  services:
+    - docker
+  environment:
+    NODE_ENV: test
+    SECRET: secret
+    MYSQL_HOST: localhost
+    MYSQL_PORT: 3306
+    MYSQL_DATABASE: circle_test
+    MYSQL_USERNAME: ubuntu
+    REDIS_HOST: localhost
+    REDIS_PORT: 6379
+    REDIS_PARTITION: test
+
+dependencies:
+  override:
+    - docker info
+    - docker build -t kkemple/jasper-iam:$CIRCLE_SHA1 .
+
+test:
+  override:
+    - |
+      docker run kkemple/jasper-iam:$CIRCLE_SHA1 npm run audit || true
+    - |
+      if [[ "$CIRCLE_BRANCH" == "master" ]]; then
+        docker run \
+          --net=host \
+          --env NODE_ENV=$NODE_ENV \
+          --env SECRET=$SECRET \
+          --env MYSQL_HOST=$MYSQL_HOST \
+          --env MYSQL_PORT=$MYSQL_PORT \
+          --env MYSQL_DATABASE=$MYSQL_DATABASE \
+          --env MYSQL_USERNAME=$MYSQL_USERNAME \
+          --env REDIS_HOST=$REDIS_HOST \
+          --env REDIS_PORT=$REDIS_PORT \
+          --env REDIS_PARTITION=$REDIS_PARTITION \
+          --env CODECLIMATE_REPO_TOKEN=$CODECLIMATE_REPO_TOKEN \
+          --env CODECOV_TOKEN=$CODECOV_TOKEN \
+          kkemple/jasper-iam:$CIRCLE_SHA1 npm run test:coverage
+      fi
+    - |
+      if [[ "$CIRCLE_BRANCH" != "master" ]]; then
+        docker run \
+          --net=host \
+          --env NODE_ENV=$NODE_ENV \
+          --env SECRET=$SECRET \
+          --env MYSQL_HOST=$MYSQL_HOST \
+          --env MYSQL_PORT=$MYSQL_PORT \
+          --env MYSQL_DATABASE=$MYSQL_DATABASE \
+          --env MYSQL_USERNAME=$MYSQL_USERNAME \
+          --env REDIS_HOST=$REDIS_HOST \
+          --env REDIS_PORT=$REDIS_PORT \
+          --env REDIS_PARTITION=$REDIS_PARTITION \
+          kkemple/jasper-iam:$CIRCLE_SHA1 npm test
+      fi
+    - |
+      docker run -d \
+        -p 8080:8080 \
+        -p 8081:8081 \
+        --net=host \
+        --env NODE_ENV=$NODE_ENV \
+        --env SECRET=$SECRET \
+        --env MYSQL_HOST=$MYSQL_HOST \
+        --env MYSQL_PORT=$MYSQL_PORT \
+        --env MYSQL_DATABASE=$MYSQL_DATABASE \
+        --env MYSQL_USERNAME=$MYSQL_USERNAME \
+        --env REDIS_HOST=$REDIS_HOST \
+        --env REDIS_PORT=$REDIS_PORT \
+        --env REDIS_PARTITION=$REDIS_PARTITION \
+        kkemple/jasper-iam:$CIRCLE_SHA1; sleep 10
+    - curl --retry 10 --retry-delay 5 -v http://localhost:3000/healthcheck
+
+deployment:
+  hub:
+    branch: master
+    commands:
+      - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD -e $DOCKER_EMAIL
+      - docker push kkemple/jasper-iam
+      - docker build -t kkemple/jasper-iam:latest .
+      - docker push kkemple/jasper-iam:latest

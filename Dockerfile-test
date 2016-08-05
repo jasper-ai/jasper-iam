@@ -1,0 +1,19 @@
+FROM node:argon
+
+RUN mkdir -p usr/src/app
+
+COPY package.json npm-shrinkwrap.json usr/src/app/
+COPY node_shrinkwrap usr/src/app/node_shrinkwrap
+
+# copy .git for codecov coverage reporting
+# COPY .git usr/src/app/.git
+
+WORKDIR usr/src/app
+RUN npm install
+
+WORKDIR /
+COPY . usr/src/app/
+
+WORKDIR usr/src/app
+
+EXPOSE 3000
