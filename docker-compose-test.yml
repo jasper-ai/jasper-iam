@@ -7,8 +7,6 @@ services:
     command: npm run test:coverage
     ports:
       - 3000:3000
-    volumes:
-      - .:/usr/src/app
     depends_on:
       - cachetest
       - dbtest

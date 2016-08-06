@@ -6,7 +6,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - .:/usr/src/app
+      - ./src:/usr/src/app/src
     depends_on:
       - cache
       - db
