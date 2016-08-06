@@ -20,7 +20,7 @@
     "package": "npm shrinkwrap --dev && node bin/fix-shrinkwrap && shrinkpack",
     "pretest": "npm run lint",
     "pretest:unit": "npm run lint",
-    "start": "npm run db:migrate:run && node lib/index.js",
+    "start": "npm run db:migrate:run && node lib/index.js | pino",
     "test": "npm run db:migrate:run && npm run db:seed:run && nyc ava",
     "test:watch": "npm run db:migrate:run && npm run db:seed:run && nyc ava -- --watch",
     "test:coverage": "npm run test && nyc report --reporter=text-lcov > coverage.lcov && codecov",
