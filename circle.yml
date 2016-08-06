@@ -9,6 +9,7 @@ dependencies:
     - docker info
     - sudo pip install docker
     - sudo pip install docker-compose
+    - touch .env
 
 test:
   override:
