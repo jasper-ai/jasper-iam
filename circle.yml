@@ -1,6 +1,4 @@
 machine:
-  pre:
-    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
   services:
     - docker
   environment:
@@ -21,6 +19,8 @@ dependencies:
 
 test:
   override:
+    - |
+      docker run jasper-ai/jasper-iam:$CIRCLE_SHA1 npm run audit || true
     - |
       docker run \
         --net=host \
@@ -49,7 +49,7 @@ deployment:
   build:
     branch: /^((?!master).)*$/
     commands:
-      - docker build -t kkemple/jasper-iam:$CIRCLE_SHA1 .
+      - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD -e $DOCKER_EMAIL
       - docker push kkemple/jasper-iam:$CIRCLE_SHA1
   latest:
     branch: master
