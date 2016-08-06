@@ -34,7 +34,7 @@ test:
         --env CODECOV_TOKEN=$CODECOV_TOKEN \
         jasper-ai/jasper-iam:$CIRCLE_SHA1 npm run test:coverage
     - |
-      docker run \
+      docker run -d \
         -p 3000:3000 \
         --net=host \
         --env NODE_ENV=$NODE_ENV \
@@ -43,7 +43,7 @@ test:
         --env DATABASE_PORT=$DATABASE_PORT \
         --env DATABASE_NAME=$DATABASE_NAME \
         --env DATABASE_USER=$DATABASE_USER \
-        jasper-ai/jasper-iam:$CIRCLE_SHA1
+        jasper-ai/jasper-iam:$CIRCLE_SHA1 npm run dev
     - sleep 10
     - curl --retry 10 --retry-delay 5 -v http://localhost:3000/healthcheck
 
