@@ -4,7 +4,7 @@ machine:
   services:
     - docker
   post:
-    - sudo service postgres stop
+    - sudo service postgresql stop
     - sudo service redis stop
 
 dependencies:
