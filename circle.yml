@@ -2,6 +2,7 @@ machine:
   services:
     - docker
   environment:
+    PORT: 3000
     NODE_ENV: test
     SECRET: SECRET
     DATABASE_HOST: localhost
@@ -18,10 +19,10 @@ dependencies:
 
 test:
   pre:
-    - docker build -t jasper-ai/jasper-iam:$CIRCLE_SHA1 .
+    - docker build -t jasperai/jasper-iam:$CIRCLE_SHA1 .
   override:
     - |
-      docker run jasper-ai/jasper-iam:$CIRCLE_SHA1 npm run audit
+      docker run jasperai/jasper-iam:$CIRCLE_SHA1 npm run audit
     - |
       docker run \
         --net=host \
@@ -32,18 +33,19 @@ test:
         --env DATABASE_NAME=$DATABASE_NAME \
         --env DATABASE_USER=$DATABASE_USER \
         --env CODECOV_TOKEN=$CODECOV_TOKEN \
-        jasper-ai/jasper-iam:$CIRCLE_SHA1 npm run test:coverage
+        jasperai/jasper-iam:$CIRCLE_SHA1 npm run test:coverage
     - |
       docker run -d \
         -p 3000:3000 \
         --net=host \
+        --env PORT=$PORT \
         --env NODE_ENV=$NODE_ENV \
         --env SECRET=$SECRET \
         --env DATABASE_HOST=$DATABASE_HOST \
         --env DATABASE_PORT=$DATABASE_PORT \
         --env DATABASE_NAME=$DATABASE_NAME \
         --env DATABASE_USER=$DATABASE_USER \
-        jasper-ai/jasper-iam:$CIRCLE_SHA1 npm run dev
+        jasperai/jasper-iam:$CIRCLE_SHA1 npm start
     - sleep 10
     - curl --retry 10 --retry-delay 5 -v http://localhost:3000/healthcheck
 
@@ -52,10 +54,10 @@ deployment:
     branch: /^((?!master).)*$/
     commands:
       - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD -e $DOCKER_EMAIL
-      - docker push kkemple/jasper-iam:$CIRCLE_SHA1
+      - docker push jasperai/jasper-iam:$CIRCLE_SHA1
   latest:
     branch: master
     commands:
       - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD -e $DOCKER_EMAIL
-      - docker build -t kkemple/jasper-iam:latest .
-      - docker push kkemple/jasper-iam:latest
+      - docker build -t jasperai/jasper-iam:latest .
+      - docker push jasperai/jasper-iam:latest

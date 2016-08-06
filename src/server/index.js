@@ -2,7 +2,7 @@ import Hapi from 'hapi'
 
 import serverConfig from './config'
 
-export const getServer = (host, port) => {
+export const getServer = () => {
   const server = new Hapi.Server({
     connections: {
       routes: {
@@ -12,7 +12,7 @@ export const getServer = (host, port) => {
   })
 
   server.connection({
-    port: port || process.env.PORT
+    port: process.env.PORT || 3000
   })
 
   return server
