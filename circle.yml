@@ -1,79 +1,30 @@
 machine:
   services:
     - docker
-  environment:
-    NODE_ENV: test
-    SECRET: SECRET
-    DATABASE_HOST: localhost
-    DATABASE_PORT: 3306
-    DATABASE_NAME: postgres
-    DATABASE_USER: postgres
-    REDIS_HOST: localhost
-    REDIS_PORT: 6379
-    REDIS_PARTITION: test
 
 dependencies:
+  cache_directories:
+    - "~/docker"
   override:
     - docker info
-    - docker build -t kkemple/jasper-iam:$CIRCLE_SHA1 .
+    - sudo pip install docker-compose
 
 test:
   override:
-    - |
-      docker run kkemple/jasper-iam:$CIRCLE_SHA1 npm run audit || true
-    - |
-      if [[ "$CIRCLE_BRANCH" == "master" ]]; then
-        docker run \
-          --net=host \
-          --env NODE_ENV=$NODE_ENV \
-          --env SECRET=$SECRET \
-          --env DATABASE_HOST=$DATABASE_HOST \
-          --env DATABASE_PORT=$DATABASE_PORT \
-          --env DATABASE_NAME=$DATABASE_NAME \
-          --env DATABASE_USER=$DATABASE_USER \
-          --env REDIS_HOST=$REDIS_HOST \
-          --env REDIS_PORT=$REDIS_PORT \
-          --env REDIS_PARTITION=$REDIS_PARTITION \
-          --env CODECOV_TOKEN=$CODECOV_TOKEN \
-          kkemple/jasper-iam:$CIRCLE_SHA1 npm run test:coverage
-      fi
-    - |
-      if [[ "$CIRCLE_BRANCH" != "master" ]]; then
-        docker run \
-          --net=host \
-          --env NODE_ENV=$NODE_ENV \
-          --env SECRET=$SECRET \
-          --env DATABASE_HOST=$DATABASE_HOST \
-          --env DATABASE_PORT=$DATABASE_PORT \
-          --env DATABASE_NAME=$DATABASE_NAME \
-          --env DATABASE_USER=$DATABASE_USER \
-          --env REDIS_HOST=$REDIS_HOST \
-          --env REDIS_PORT=$REDIS_PORT \
-          --env REDIS_PARTITION=$REDIS_PARTITION \
-          kkemple/jasper-iam:$CIRCLE_SHA1 npm test
-      fi
-    - |
-      docker run -d \
-        -p 8080:8080 \
-        -p 8081:8081 \
-        --net=host \
-        --env NODE_ENV=$NODE_ENV \
-        --env SECRET=$SECRET \
-        --env DATABASE_HOST=$DATABASE_HOST \
-        --env DATABASE_PORT=$DATABASE_PORT \
-        --env DATABASE_NAME=$DATABASE_NAME \
-        --env DATABASE_USER=$DATABASE_USER \
-        --env REDIS_HOST=$REDIS_HOST \
-        --env REDIS_PORT=$REDIS_PORT \
-        --env REDIS_PARTITION=$REDIS_PARTITION \
-        kkemple/jasper-iam:$CIRCLE_SHA1; sleep 10
+    - npm run audit
+    - bin/docker-test
+    - docker-compose up -d; sleep 10
     - curl --retry 10 --retry-delay 5 -v http://localhost:3000/healthcheck
 
 deployment:
-  hub:
+  build:
+    branch: /^((?!master).)*$/
+    commands:
+      - docker build -t kkemple/jasper-iam:$CIRCLE_SHA1 .
+      - docker push kkemple/jasper-iam:$CIRCLE_SHA1
+  latest:
     branch: master
     commands:
       - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD -e $DOCKER_EMAIL
-      - docker push kkemple/jasper-iam:$CIRCLE_SHA1
       - docker build -t kkemple/jasper-iam:latest .
       - docker push kkemple/jasper-iam:latest

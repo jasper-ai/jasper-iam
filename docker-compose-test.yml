@@ -17,7 +17,6 @@ services:
       - cachetest
       - dbtest
       - statsdtest
-    env_file: .env
     environment:
       - DATABASE_NAME=test
       - DATABASE_HOST=dbtest
