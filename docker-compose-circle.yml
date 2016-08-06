@@ -1,0 +1,17 @@
+version: '2'
+services:
+  jasper-iam-test:
+    build:
+      context: .
+      dockerfile: Dockerfile-test
+    command: npm run test:coverage
+    ports:
+      - 3000:3000
+    environment:
+      - DATABASE_NAME=circle_test
+      - DATABASE_HOST=localhost
+      - DATABASE_PORT=5432
+      - DATABASE_USER=ubuntu
+      - NODE_ENV=test
+      - SECRET=SECRET
+      - CODECOV_TOKEN=5bfef61d-4c62-4a4d-a5fb-379f62ec85c5
