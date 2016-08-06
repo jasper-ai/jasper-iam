@@ -12,5 +12,3 @@ WORKDIR /
 COPY . usr/src/app/
 
 WORKDIR usr/src/app
-
-EXPOSE 3000
