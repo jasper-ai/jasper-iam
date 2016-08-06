@@ -2,8 +2,9 @@ FROM node:argon
 
 RUN mkdir -p usr/src/app
 
-COPY package.json npm-shrinkwrap.json usr/src/app/
-COPY node_shrinkwrap usr/src/app/node_shrinkwrap
+COPY package.json usr/src/app/
+# COPY package.json npm-shrinkwrap.json usr/src/app/
+# COPY node_shrinkwrap usr/src/app/node_shrinkwrap
 
 WORKDIR usr/src/app
 RUN npm install
