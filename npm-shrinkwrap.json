@@ -2528,628 +2528,649 @@
       "resolved": "./node_shrinkwrap/items-2.1.1.tgz"
     },
     "jasper-hapi-healthcheck": {
-      "version": "0.0.4",
-      "from": "jasper-hapi-healthcheck@0.0.4",
-      "resolved": "./node_shrinkwrap/jasper-hapi-healthcheck-0.0.4.tgz",
+      "version": "0.1.0",
+      "from": "jasper-hapi-healthcheck@>=0.1.0 <0.2.0",
       "dependencies": {
-        "fsevents": {
-          "version": "1.0.14",
-          "from": "fsevents@>=1.0.0 <2.0.0",
-          "resolved": "./node_shrinkwrap/fsevents-1.0.14.tgz",
+        "amdefine": {
+          "version": "1.0.0",
+          "from": "amdefine@>=0.0.4",
+          "resolved": "./node_shrinkwrap/amdefine-1.0.0.tgz"
+        },
+        "ansi-regex": {
+          "version": "2.0.0",
+          "from": "ansi-regex@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/ansi-regex-2.0.0.tgz"
+        },
+        "ansi-styles": {
+          "version": "2.2.1",
+          "from": "ansi-styles@>=2.2.1 <3.0.0",
+          "resolved": "./node_shrinkwrap/ansi-styles-2.2.1.tgz"
+        },
+        "babel-code-frame": {
+          "version": "6.11.0",
+          "from": "babel-code-frame@>=6.7.5 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-code-frame-6.11.0.tgz"
+        },
+        "babel-core": {
+          "version": "6.13.2",
+          "from": "babel-core@>=6.3.21 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-core-6.13.2.tgz",
           "dependencies": {
-            "abbrev": {
-              "version": "1.0.9",
-              "from": "abbrev@>=1.0.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/abbrev-1.0.9.tgz"
-            },
-            "ansi-regex": {
-              "version": "2.0.0",
-              "from": "ansi-regex@>=2.0.0 <3.0.0",
-              "resolved": "./node_shrinkwrap/ansi-regex-2.0.0.tgz"
-            },
-            "ansi-styles": {
-              "version": "2.2.1",
-              "from": "ansi-styles@>=2.2.1 <3.0.0",
-              "resolved": "./node_shrinkwrap/ansi-styles-2.2.1.tgz"
-            },
-            "aproba": {
-              "version": "1.0.4",
-              "from": "aproba@>=1.0.3 <2.0.0",
-              "resolved": "./node_shrinkwrap/aproba-1.0.4.tgz"
-            },
-            "are-we-there-yet": {
-              "version": "1.1.2",
-              "from": "are-we-there-yet@>=1.1.2 <1.2.0",
-              "resolved": "./node_shrinkwrap/are-we-there-yet-1.1.2.tgz"
-            },
-            "asn1": {
-              "version": "0.2.3",
-              "from": "asn1@>=0.2.3 <0.3.0",
-              "resolved": "./node_shrinkwrap/asn1-0.2.3.tgz"
-            },
-            "assert-plus": {
-              "version": "0.2.0",
-              "from": "assert-plus@>=0.2.0 <0.3.0",
-              "resolved": "./node_shrinkwrap/assert-plus-0.2.0.tgz"
-            },
-            "async": {
-              "version": "1.5.2",
-              "from": "async@>=1.5.2 <2.0.0",
-              "resolved": "./node_shrinkwrap/async-1.5.2.tgz"
-            },
-            "aws-sign2": {
-              "version": "0.6.0",
-              "from": "aws-sign2@>=0.6.0 <0.7.0",
-              "resolved": "./node_shrinkwrap/aws-sign2-0.6.0.tgz"
-            },
-            "aws4": {
-              "version": "1.4.1",
-              "from": "aws4@>=1.2.1 <2.0.0",
-              "resolved": "./node_shrinkwrap/aws4-1.4.1.tgz"
-            },
-            "balanced-match": {
-              "version": "0.4.2",
-              "from": "balanced-match@>=0.4.1 <0.5.0",
-              "resolved": "./node_shrinkwrap/balanced-match-0.4.2.tgz"
-            },
-            "bl": {
-              "version": "1.1.2",
-              "from": "bl@>=1.1.2 <1.2.0",
-              "resolved": "./node_shrinkwrap/bl-1.1.2.tgz",
-              "dependencies": {
-                "readable-stream": {
-                  "version": "2.0.6",
-                  "from": "readable-stream@>=2.0.5 <2.1.0",
-                  "resolved": "./node_shrinkwrap/readable-stream-2.0.6.tgz"
-                }
-              }
-            },
-            "block-stream": {
-              "version": "0.0.9",
-              "from": "block-stream@*",
-              "resolved": "./node_shrinkwrap/block-stream-0.0.9.tgz"
-            },
-            "boom": {
-              "version": "2.10.1",
-              "from": "boom@>=2.0.0 <3.0.0",
-              "resolved": "./node_shrinkwrap/boom-2.10.1.tgz"
-            },
-            "brace-expansion": {
-              "version": "1.1.5",
-              "from": "brace-expansion@>=1.0.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/brace-expansion-1.1.5.tgz"
-            },
-            "buffer-shims": {
+            "path-exists": {
               "version": "1.0.0",
-              "from": "buffer-shims@>=1.0.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/buffer-shims-1.0.0.tgz"
-            },
-            "caseless": {
-              "version": "0.11.0",
-              "from": "caseless@>=0.11.0 <0.12.0",
-              "resolved": "./node_shrinkwrap/caseless-0.11.0.tgz"
-            },
-            "chalk": {
-              "version": "1.1.3",
-              "from": "chalk@>=1.1.1 <2.0.0",
-              "resolved": "./node_shrinkwrap/chalk-1.1.3.tgz"
-            },
-            "code-point-at": {
-              "version": "1.0.0",
-              "from": "code-point-at@>=1.0.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/code-point-at-1.0.0.tgz"
-            },
-            "combined-stream": {
-              "version": "1.0.5",
-              "from": "combined-stream@>=1.0.5 <1.1.0",
-              "resolved": "./node_shrinkwrap/combined-stream-1.0.5.tgz"
-            },
-            "commander": {
-              "version": "2.9.0",
-              "from": "commander@>=2.9.0 <3.0.0",
-              "resolved": "./node_shrinkwrap/commander-2.9.0.tgz"
-            },
-            "concat-map": {
-              "version": "0.0.1",
-              "from": "concat-map@0.0.1",
-              "resolved": "./node_shrinkwrap/concat-map-0.0.1.tgz"
-            },
-            "console-control-strings": {
-              "version": "1.1.0",
-              "from": "console-control-strings@>=1.1.0 <1.2.0",
-              "resolved": "./node_shrinkwrap/console-control-strings-1.1.0.tgz"
-            },
-            "core-util-is": {
-              "version": "1.0.2",
-              "from": "core-util-is@>=1.0.0 <1.1.0",
-              "resolved": "./node_shrinkwrap/core-util-is-1.0.2.tgz"
-            },
-            "cryptiles": {
-              "version": "2.0.5",
-              "from": "cryptiles@>=2.0.0 <3.0.0",
-              "resolved": "./node_shrinkwrap/cryptiles-2.0.5.tgz"
-            },
-            "dashdash": {
-              "version": "1.14.0",
-              "from": "dashdash@>=1.12.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/dashdash-1.14.0.tgz",
-              "dependencies": {
-                "assert-plus": {
-                  "version": "1.0.0",
-                  "from": "assert-plus@>=1.0.0 <2.0.0",
-                  "resolved": "./node_shrinkwrap/assert-plus-1.0.0.tgz"
-                }
-              }
-            },
-            "debug": {
-              "version": "2.2.0",
-              "from": "debug@>=2.2.0 <2.3.0",
-              "resolved": "./node_shrinkwrap/debug-2.2.0.tgz"
-            },
-            "deep-extend": {
-              "version": "0.4.1",
-              "from": "deep-extend@>=0.4.0 <0.5.0",
-              "resolved": "./node_shrinkwrap/deep-extend-0.4.1.tgz"
-            },
-            "delayed-stream": {
-              "version": "1.0.0",
-              "from": "delayed-stream@>=1.0.0 <1.1.0",
-              "resolved": "./node_shrinkwrap/delayed-stream-1.0.0.tgz"
-            },
-            "delegates": {
-              "version": "1.0.0",
-              "from": "delegates@>=1.0.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/delegates-1.0.0.tgz"
-            },
-            "ecc-jsbn": {
-              "version": "0.1.1",
-              "from": "ecc-jsbn@>=0.1.1 <0.2.0",
-              "resolved": "./node_shrinkwrap/ecc-jsbn-0.1.1.tgz"
-            },
-            "escape-string-regexp": {
-              "version": "1.0.5",
-              "from": "escape-string-regexp@>=1.0.2 <2.0.0",
-              "resolved": "./node_shrinkwrap/escape-string-regexp-1.0.5.tgz"
-            },
-            "extend": {
-              "version": "3.0.0",
-              "from": "extend@>=3.0.0 <3.1.0",
-              "resolved": "./node_shrinkwrap/extend-3.0.0.tgz"
-            },
-            "extsprintf": {
-              "version": "1.0.2",
-              "from": "extsprintf@1.0.2",
-              "resolved": "./node_shrinkwrap/extsprintf-1.0.2.tgz"
-            },
-            "forever-agent": {
-              "version": "0.6.1",
-              "from": "forever-agent@>=0.6.1 <0.7.0",
-              "resolved": "./node_shrinkwrap/forever-agent-0.6.1.tgz"
-            },
-            "form-data": {
-              "version": "1.0.0-rc4",
-              "from": "form-data@>=1.0.0-rc4 <1.1.0",
-              "resolved": "./node_shrinkwrap/form-data-1.0.0-rc4.tgz"
-            },
-            "fs.realpath": {
-              "version": "1.0.0",
-              "from": "fs.realpath@>=1.0.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/fs.realpath-1.0.0.tgz"
-            },
-            "fstream": {
-              "version": "1.0.10",
-              "from": "fstream@>=1.0.2 <2.0.0",
-              "resolved": "./node_shrinkwrap/fstream-1.0.10.tgz"
-            },
-            "fstream-ignore": {
-              "version": "1.0.5",
-              "from": "fstream-ignore@>=1.0.5 <1.1.0",
-              "resolved": "./node_shrinkwrap/fstream-ignore-1.0.5.tgz"
-            },
-            "gauge": {
-              "version": "2.6.0",
-              "from": "gauge@>=2.6.0 <2.7.0",
-              "resolved": "./node_shrinkwrap/gauge-2.6.0.tgz"
-            },
-            "generate-function": {
-              "version": "2.0.0",
-              "from": "generate-function@>=2.0.0 <3.0.0",
-              "resolved": "./node_shrinkwrap/generate-function-2.0.0.tgz"
-            },
-            "generate-object-property": {
-              "version": "1.2.0",
-              "from": "generate-object-property@>=1.1.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/generate-object-property-1.2.0.tgz"
-            },
-            "getpass": {
-              "version": "0.1.6",
-              "from": "getpass@>=0.1.1 <0.2.0",
-              "resolved": "./node_shrinkwrap/getpass-0.1.6.tgz",
-              "dependencies": {
-                "assert-plus": {
-                  "version": "1.0.0",
-                  "from": "assert-plus@>=1.0.0 <2.0.0",
-                  "resolved": "./node_shrinkwrap/assert-plus-1.0.0.tgz"
-                }
-              }
-            },
-            "glob": {
-              "version": "7.0.5",
-              "from": "glob@>=7.0.5 <8.0.0",
-              "resolved": "./node_shrinkwrap/glob-7.0.5.tgz"
-            },
-            "graceful-fs": {
-              "version": "4.1.4",
-              "from": "graceful-fs@>=4.1.2 <5.0.0",
-              "resolved": "./node_shrinkwrap/graceful-fs-4.1.4.tgz"
-            },
-            "graceful-readlink": {
-              "version": "1.0.1",
-              "from": "graceful-readlink@>=1.0.0",
-              "resolved": "./node_shrinkwrap/graceful-readlink-1.0.1.tgz"
-            },
-            "har-validator": {
-              "version": "2.0.6",
-              "from": "har-validator@>=2.0.6 <2.1.0",
-              "resolved": "./node_shrinkwrap/har-validator-2.0.6.tgz"
-            },
-            "has-ansi": {
-              "version": "2.0.0",
-              "from": "has-ansi@>=2.0.0 <3.0.0",
-              "resolved": "./node_shrinkwrap/has-ansi-2.0.0.tgz"
-            },
-            "has-color": {
-              "version": "0.1.7",
-              "from": "has-color@>=0.1.7 <0.2.0",
-              "resolved": "./node_shrinkwrap/has-color-0.1.7.tgz"
-            },
-            "has-unicode": {
-              "version": "2.0.1",
-              "from": "has-unicode@>=2.0.0 <3.0.0",
-              "resolved": "./node_shrinkwrap/has-unicode-2.0.1.tgz"
-            },
-            "hawk": {
-              "version": "3.1.3",
-              "from": "hawk@>=3.1.3 <3.2.0",
-              "resolved": "./node_shrinkwrap/hawk-3.1.3.tgz"
-            },
-            "hoek": {
-              "version": "2.16.3",
-              "from": "hoek@>=2.0.0 <3.0.0",
-              "resolved": "./node_shrinkwrap/hoek-2.16.3.tgz"
-            },
-            "http-signature": {
-              "version": "1.1.1",
-              "from": "http-signature@>=1.1.0 <1.2.0",
-              "resolved": "./node_shrinkwrap/http-signature-1.1.1.tgz"
-            },
-            "inflight": {
-              "version": "1.0.5",
-              "from": "inflight@>=1.0.4 <2.0.0",
-              "resolved": "./node_shrinkwrap/inflight-1.0.5.tgz"
-            },
-            "inherits": {
-              "version": "2.0.1",
-              "from": "inherits@>=2.0.1 <2.1.0",
-              "resolved": "./node_shrinkwrap/inherits-2.0.1.tgz"
-            },
-            "ini": {
-              "version": "1.3.4",
-              "from": "ini@>=1.3.0 <1.4.0",
-              "resolved": "./node_shrinkwrap/ini-1.3.4.tgz"
-            },
-            "is-fullwidth-code-point": {
-              "version": "1.0.0",
-              "from": "is-fullwidth-code-point@>=1.0.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/is-fullwidth-code-point-1.0.0.tgz"
-            },
-            "is-my-json-valid": {
-              "version": "2.13.1",
-              "from": "is-my-json-valid@>=2.12.4 <3.0.0",
-              "resolved": "./node_shrinkwrap/is-my-json-valid-2.13.1.tgz"
-            },
-            "is-property": {
-              "version": "1.0.2",
-              "from": "is-property@>=1.0.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/is-property-1.0.2.tgz"
-            },
-            "is-typedarray": {
-              "version": "1.0.0",
-              "from": "is-typedarray@>=1.0.0 <1.1.0",
-              "resolved": "./node_shrinkwrap/is-typedarray-1.0.0.tgz"
-            },
-            "isarray": {
-              "version": "1.0.0",
-              "from": "isarray@>=1.0.0 <1.1.0",
-              "resolved": "./node_shrinkwrap/isarray-1.0.0.tgz"
-            },
-            "isstream": {
-              "version": "0.1.2",
-              "from": "isstream@>=0.1.2 <0.2.0",
-              "resolved": "./node_shrinkwrap/isstream-0.1.2.tgz"
-            },
-            "jodid25519": {
-              "version": "1.0.2",
-              "from": "jodid25519@>=1.0.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/jodid25519-1.0.2.tgz"
-            },
-            "jsbn": {
-              "version": "0.1.0",
-              "from": "jsbn@>=0.1.0 <0.2.0",
-              "resolved": "./node_shrinkwrap/jsbn-0.1.0.tgz"
-            },
-            "json-schema": {
-              "version": "0.2.2",
-              "from": "json-schema@0.2.2",
-              "resolved": "./node_shrinkwrap/json-schema-0.2.2.tgz"
-            },
-            "json-stringify-safe": {
-              "version": "5.0.1",
-              "from": "json-stringify-safe@>=5.0.1 <5.1.0",
-              "resolved": "./node_shrinkwrap/json-stringify-safe-5.0.1.tgz"
-            },
-            "jsonpointer": {
-              "version": "2.0.0",
-              "from": "jsonpointer@2.0.0",
-              "resolved": "./node_shrinkwrap/jsonpointer-2.0.0.tgz"
-            },
-            "jsprim": {
-              "version": "1.3.0",
-              "from": "jsprim@>=1.2.2 <2.0.0",
-              "resolved": "./node_shrinkwrap/jsprim-1.3.0.tgz"
-            },
-            "mime-db": {
-              "version": "1.23.0",
-              "from": "mime-db@>=1.23.0 <1.24.0",
-              "resolved": "./node_shrinkwrap/mime-db-1.23.0.tgz"
-            },
-            "mime-types": {
-              "version": "2.1.11",
-              "from": "mime-types@>=2.1.7 <2.2.0",
-              "resolved": "./node_shrinkwrap/mime-types-2.1.11.tgz"
-            },
-            "minimatch": {
-              "version": "3.0.2",
-              "from": "minimatch@>=3.0.2 <4.0.0",
-              "resolved": "./node_shrinkwrap/minimatch-3.0.2.tgz"
-            },
-            "minimist": {
-              "version": "0.0.8",
-              "from": "minimist@0.0.8",
-              "resolved": "./node_shrinkwrap/minimist-0.0.8.tgz"
-            },
-            "mkdirp": {
-              "version": "0.5.1",
-              "from": "mkdirp@>=0.5.0 <0.6.0",
-              "resolved": "./node_shrinkwrap/mkdirp-0.5.1.tgz"
-            },
-            "ms": {
-              "version": "0.7.1",
-              "from": "ms@0.7.1",
-              "resolved": "./node_shrinkwrap/ms-0.7.1.tgz"
-            },
-            "node-pre-gyp": {
-              "version": "0.6.29",
-              "from": "node-pre-gyp@>=0.6.29 <0.7.0",
-              "resolved": "./node_shrinkwrap/node-pre-gyp-0.6.29.tgz"
-            },
-            "node-uuid": {
-              "version": "1.4.7",
-              "from": "node-uuid@>=1.4.7 <1.5.0",
-              "resolved": "./node_shrinkwrap/node-uuid-1.4.7.tgz"
-            },
-            "nopt": {
-              "version": "3.0.6",
-              "from": "nopt@>=3.0.1 <3.1.0",
-              "resolved": "./node_shrinkwrap/nopt-3.0.6.tgz"
-            },
-            "npmlog": {
-              "version": "3.1.2",
-              "from": "npmlog@>=3.1.2 <3.2.0",
-              "resolved": "./node_shrinkwrap/npmlog-3.1.2.tgz"
-            },
-            "number-is-nan": {
-              "version": "1.0.0",
-              "from": "number-is-nan@>=1.0.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/number-is-nan-1.0.0.tgz"
-            },
-            "oauth-sign": {
-              "version": "0.8.2",
-              "from": "oauth-sign@>=0.8.1 <0.9.0",
-              "resolved": "./node_shrinkwrap/oauth-sign-0.8.2.tgz"
-            },
-            "object-assign": {
-              "version": "4.1.0",
-              "from": "object-assign@>=4.1.0 <5.0.0",
-              "resolved": "./node_shrinkwrap/object-assign-4.1.0.tgz"
-            },
-            "once": {
-              "version": "1.3.3",
-              "from": "once@>=1.3.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/once-1.3.3.tgz"
-            },
-            "path-is-absolute": {
-              "version": "1.0.0",
-              "from": "path-is-absolute@>=1.0.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/path-is-absolute-1.0.0.tgz"
-            },
-            "pinkie": {
-              "version": "2.0.4",
-              "from": "pinkie@>=2.0.0 <3.0.0",
-              "resolved": "./node_shrinkwrap/pinkie-2.0.4.tgz"
-            },
-            "pinkie-promise": {
-              "version": "2.0.1",
-              "from": "pinkie-promise@>=2.0.0 <3.0.0",
-              "resolved": "./node_shrinkwrap/pinkie-promise-2.0.1.tgz"
-            },
-            "process-nextick-args": {
-              "version": "1.0.7",
-              "from": "process-nextick-args@>=1.0.6 <1.1.0",
-              "resolved": "./node_shrinkwrap/process-nextick-args-1.0.7.tgz"
-            },
-            "qs": {
-              "version": "6.2.0",
-              "from": "qs@>=6.2.0 <6.3.0",
-              "resolved": "./node_shrinkwrap/qs-6.2.0.tgz"
-            },
-            "rc": {
-              "version": "1.1.6",
-              "from": "rc@>=1.1.0 <1.2.0",
-              "resolved": "./node_shrinkwrap/rc-1.1.6.tgz",
-              "dependencies": {
-                "minimist": {
-                  "version": "1.2.0",
-                  "from": "minimist@>=1.2.0 <2.0.0",
-                  "resolved": "./node_shrinkwrap/minimist-1.2.0.tgz"
-                }
-              }
-            },
-            "readable-stream": {
-              "version": "2.1.4",
-              "from": "readable-stream@>=2.0.0 <3.0.0||>=1.1.13 <2.0.0",
-              "resolved": "./node_shrinkwrap/readable-stream-2.1.4.tgz"
-            },
-            "request": {
-              "version": "2.73.0",
-              "from": "request@>=2.0.0 <3.0.0",
-              "resolved": "./node_shrinkwrap/request-2.73.0.tgz"
-            },
-            "rimraf": {
-              "version": "2.5.3",
-              "from": "rimraf@>=2.5.0 <2.6.0",
-              "resolved": "./node_shrinkwrap/rimraf-2.5.3.tgz"
-            },
-            "semver": {
-              "version": "5.2.0",
-              "from": "semver@>=5.2.0 <5.3.0",
-              "resolved": "./node_shrinkwrap/semver-5.2.0.tgz"
-            },
-            "set-blocking": {
-              "version": "2.0.0",
-              "from": "set-blocking@>=2.0.0 <2.1.0",
-              "resolved": "./node_shrinkwrap/set-blocking-2.0.0.tgz"
-            },
-            "signal-exit": {
-              "version": "3.0.0",
-              "from": "signal-exit@>=3.0.0 <4.0.0",
-              "resolved": "./node_shrinkwrap/signal-exit-3.0.0.tgz"
-            },
-            "sntp": {
-              "version": "1.0.9",
-              "from": "sntp@>=1.0.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/sntp-1.0.9.tgz"
-            },
-            "sshpk": {
-              "version": "1.8.3",
-              "from": "sshpk@>=1.7.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/sshpk-1.8.3.tgz",
-              "dependencies": {
-                "assert-plus": {
-                  "version": "1.0.0",
-                  "from": "assert-plus@>=1.0.0 <2.0.0",
-                  "resolved": "./node_shrinkwrap/assert-plus-1.0.0.tgz"
-                }
-              }
-            },
-            "string_decoder": {
-              "version": "0.10.31",
-              "from": "string_decoder@>=0.10.0 <0.11.0",
-              "resolved": "./node_shrinkwrap/string_decoder-0.10.31.tgz"
-            },
-            "string-width": {
-              "version": "1.0.1",
-              "from": "string-width@>=1.0.1 <2.0.0",
-              "resolved": "./node_shrinkwrap/string-width-1.0.1.tgz"
-            },
-            "stringstream": {
-              "version": "0.0.5",
-              "from": "stringstream@>=0.0.4 <0.1.0",
-              "resolved": "./node_shrinkwrap/stringstream-0.0.5.tgz"
-            },
-            "strip-ansi": {
-              "version": "3.0.1",
-              "from": "strip-ansi@>=3.0.1 <4.0.0",
-              "resolved": "./node_shrinkwrap/strip-ansi-3.0.1.tgz"
-            },
-            "strip-json-comments": {
-              "version": "1.0.4",
-              "from": "strip-json-comments@>=1.0.4 <1.1.0",
-              "resolved": "./node_shrinkwrap/strip-json-comments-1.0.4.tgz"
-            },
-            "supports-color": {
-              "version": "2.0.0",
-              "from": "supports-color@>=2.0.0 <3.0.0",
-              "resolved": "./node_shrinkwrap/supports-color-2.0.0.tgz"
-            },
-            "tar": {
-              "version": "2.2.1",
-              "from": "tar@>=2.2.0 <2.3.0",
-              "resolved": "./node_shrinkwrap/tar-2.2.1.tgz"
-            },
-            "tar-pack": {
-              "version": "3.1.4",
-              "from": "tar-pack@>=3.1.0 <3.2.0",
-              "resolved": "./node_shrinkwrap/tar-pack-3.1.4.tgz"
-            },
-            "tough-cookie": {
-              "version": "2.2.2",
-              "from": "tough-cookie@>=2.2.0 <2.3.0",
-              "resolved": "./node_shrinkwrap/tough-cookie-2.2.2.tgz"
-            },
-            "tunnel-agent": {
-              "version": "0.4.3",
-              "from": "tunnel-agent@>=0.4.1 <0.5.0",
-              "resolved": "./node_shrinkwrap/tunnel-agent-0.4.3.tgz"
-            },
-            "tweetnacl": {
-              "version": "0.13.3",
-              "from": "tweetnacl@>=0.13.0 <0.14.0",
-              "resolved": "./node_shrinkwrap/tweetnacl-0.13.3.tgz"
-            },
-            "uid-number": {
-              "version": "0.0.6",
-              "from": "uid-number@>=0.0.6 <0.1.0",
-              "resolved": "./node_shrinkwrap/uid-number-0.0.6.tgz"
-            },
-            "util-deprecate": {
-              "version": "1.0.2",
-              "from": "util-deprecate@>=1.0.1 <1.1.0",
-              "resolved": "./node_shrinkwrap/util-deprecate-1.0.2.tgz"
-            },
-            "verror": {
-              "version": "1.3.6",
-              "from": "verror@1.3.6",
-              "resolved": "./node_shrinkwrap/verror-1.3.6.tgz"
-            },
-            "wide-align": {
-              "version": "1.1.0",
-              "from": "wide-align@>=1.1.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/wide-align-1.1.0.tgz"
-            },
-            "wrappy": {
-              "version": "1.0.2",
-              "from": "wrappy@>=1.0.0 <2.0.0",
-              "resolved": "./node_shrinkwrap/wrappy-1.0.2.tgz"
-            },
-            "xtend": {
-              "version": "4.0.1",
-              "from": "xtend@>=4.0.0 <5.0.0",
-              "resolved": "./node_shrinkwrap/xtend-4.0.1.tgz"
+              "from": "path-exists@>=1.0.0 <2.0.0",
+              "resolved": "./node_shrinkwrap/path-exists-1.0.0.tgz"
             }
           }
+        },
+        "babel-generator": {
+          "version": "6.11.4",
+          "from": "babel-generator@>=6.11.4 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-generator-6.11.4.tgz"
+        },
+        "babel-helpers": {
+          "version": "6.8.0",
+          "from": "babel-helpers@>=6.8.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-helpers-6.8.0.tgz"
+        },
+        "babel-messages": {
+          "version": "6.8.0",
+          "from": "babel-messages@>=6.8.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-messages-6.8.0.tgz"
+        },
+        "babel-register": {
+          "version": "6.11.6",
+          "from": "babel-register@>=6.11.6 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-register-6.11.6.tgz",
+          "dependencies": {
+            "path-exists": {
+              "version": "1.0.0",
+              "from": "path-exists@>=1.0.0 <2.0.0",
+              "resolved": "./node_shrinkwrap/path-exists-1.0.0.tgz"
+            },
+            "source-map": {
+              "version": "0.1.32",
+              "from": "source-map@0.1.32",
+              "resolved": "./node_shrinkwrap/source-map-0.1.32.tgz"
+            },
+            "source-map-support": {
+              "version": "0.2.10",
+              "from": "source-map-support@>=0.2.10 <0.3.0",
+              "resolved": "./node_shrinkwrap/source-map-support-0.2.10.tgz"
+            }
+          }
+        },
+        "babel-runtime": {
+          "version": "6.11.6",
+          "from": "babel-runtime@>=6.3.19 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-runtime-6.11.6.tgz"
+        },
+        "babel-template": {
+          "version": "6.9.0",
+          "from": "babel-template@>=6.9.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-template-6.9.0.tgz"
+        },
+        "babel-traverse": {
+          "version": "6.13.0",
+          "from": "babel-traverse@>=6.13.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-traverse-6.13.0.tgz"
+        },
+        "babel-types": {
+          "version": "6.13.0",
+          "from": "babel-types@>=6.13.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-types-6.13.0.tgz"
+        },
+        "babylon": {
+          "version": "6.8.4",
+          "from": "babylon@>=6.7.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babylon-6.8.4.tgz"
+        },
+        "balanced-match": {
+          "version": "0.4.2",
+          "from": "balanced-match@>=0.4.1 <0.5.0",
+          "resolved": "./node_shrinkwrap/balanced-match-0.4.2.tgz"
+        },
+        "brace-expansion": {
+          "version": "1.1.6",
+          "from": "brace-expansion@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/brace-expansion-1.1.6.tgz"
+        },
+        "chalk": {
+          "version": "1.1.3",
+          "from": "chalk@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/chalk-1.1.3.tgz"
+        },
+        "concat-map": {
+          "version": "0.0.1",
+          "from": "concat-map@0.0.1",
+          "resolved": "./node_shrinkwrap/concat-map-0.0.1.tgz"
+        },
+        "convert-source-map": {
+          "version": "1.3.0",
+          "from": "convert-source-map@>=1.2.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/convert-source-map-1.3.0.tgz"
+        },
+        "core-js": {
+          "version": "2.4.1",
+          "from": "core-js@>=2.4.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/core-js-2.4.1.tgz"
+        },
+        "d": {
+          "version": "0.1.1",
+          "from": "d@>=0.1.1 <0.2.0",
+          "resolved": "./node_shrinkwrap/d-0.1.1.tgz"
+        },
+        "debug": {
+          "version": "2.2.0",
+          "from": "debug@>=2.2.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/debug-2.2.0.tgz"
+        },
+        "detect-indent": {
+          "version": "3.0.1",
+          "from": "detect-indent@>=3.0.1 <4.0.0",
+          "resolved": "./node_shrinkwrap/detect-indent-3.0.1.tgz",
+          "dependencies": {
+            "minimist": {
+              "version": "1.2.0",
+              "from": "minimist@>=1.1.0 <2.0.0",
+              "resolved": "./node_shrinkwrap/minimist-1.2.0.tgz"
+            },
+            "repeating": {
+              "version": "1.1.3",
+              "from": "repeating@>=1.1.0 <2.0.0",
+              "resolved": "./node_shrinkwrap/repeating-1.1.3.tgz"
+            }
+          }
+        },
+        "es5-ext": {
+          "version": "0.10.12",
+          "from": "es5-ext@>=0.10.11 <0.11.0",
+          "resolved": "./node_shrinkwrap/es5-ext-0.10.12.tgz"
+        },
+        "es6-iterator": {
+          "version": "2.0.0",
+          "from": "es6-iterator@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/es6-iterator-2.0.0.tgz"
+        },
+        "es6-symbol": {
+          "version": "3.1.0",
+          "from": "es6-symbol@>=3.1.0 <3.2.0",
+          "resolved": "./node_shrinkwrap/es6-symbol-3.1.0.tgz"
+        },
+        "escape-string-regexp": {
+          "version": "1.0.5",
+          "from": "escape-string-regexp@>=1.0.2 <2.0.0",
+          "resolved": "./node_shrinkwrap/escape-string-regexp-1.0.5.tgz"
+        },
+        "esutils": {
+          "version": "2.0.2",
+          "from": "esutils@>=2.0.2 <3.0.0",
+          "resolved": "./node_shrinkwrap/esutils-2.0.2.tgz"
+        },
+        "get-stdin": {
+          "version": "4.0.1",
+          "from": "get-stdin@>=4.0.1 <5.0.0",
+          "resolved": "./node_shrinkwrap/get-stdin-4.0.1.tgz"
+        },
+        "globals": {
+          "version": "8.18.0",
+          "from": "globals@>=8.3.0 <9.0.0",
+          "resolved": "./node_shrinkwrap/globals-8.18.0.tgz"
+        },
+        "has-ansi": {
+          "version": "2.0.0",
+          "from": "has-ansi@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/has-ansi-2.0.0.tgz"
+        },
+        "home-or-tmp": {
+          "version": "1.0.0",
+          "from": "home-or-tmp@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/home-or-tmp-1.0.0.tgz"
+        },
+        "invariant": {
+          "version": "2.2.1",
+          "from": "invariant@>=2.2.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/invariant-2.2.1.tgz"
+        },
+        "is-finite": {
+          "version": "1.0.1",
+          "from": "is-finite@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/is-finite-1.0.1.tgz"
+        },
+        "js-tokens": {
+          "version": "2.0.0",
+          "from": "js-tokens@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/js-tokens-2.0.0.tgz"
+        },
+        "json5": {
+          "version": "0.4.0",
+          "from": "json5@>=0.4.0 <0.5.0",
+          "resolved": "./node_shrinkwrap/json5-0.4.0.tgz"
+        },
+        "lodash": {
+          "version": "4.14.1",
+          "from": "lodash@>=4.2.0 <5.0.0",
+          "resolved": "./node_shrinkwrap/lodash-4.14.1.tgz"
+        },
+        "loose-envify": {
+          "version": "1.2.0",
+          "from": "loose-envify@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/loose-envify-1.2.0.tgz",
+          "dependencies": {
+            "js-tokens": {
+              "version": "1.0.3",
+              "from": "js-tokens@>=1.0.1 <2.0.0",
+              "resolved": "./node_shrinkwrap/js-tokens-1.0.3.tgz"
+            }
+          }
+        },
+        "minimatch": {
+          "version": "3.0.2",
+          "from": "minimatch@>=3.0.2 <4.0.0",
+          "resolved": "./node_shrinkwrap/minimatch-3.0.2.tgz"
+        },
+        "minimist": {
+          "version": "0.0.8",
+          "from": "minimist@0.0.8",
+          "resolved": "./node_shrinkwrap/minimist-0.0.8.tgz"
+        },
+        "mkdirp": {
+          "version": "0.5.1",
+          "from": "mkdirp@>=0.5.1 <0.6.0",
+          "resolved": "./node_shrinkwrap/mkdirp-0.5.1.tgz"
+        },
+        "ms": {
+          "version": "0.7.1",
+          "from": "ms@>=0.7.1 <0.8.0",
+          "resolved": "./node_shrinkwrap/ms-0.7.1.tgz"
         },
         "nan": {
           "version": "2.4.0",
           "from": "nan@>=2.3.0 <3.0.0",
           "resolved": "./node_shrinkwrap/nan-2.4.0.tgz"
+        },
+        "number-is-nan": {
+          "version": "1.0.0",
+          "from": "number-is-nan@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/number-is-nan-1.0.0.tgz"
+        },
+        "os-tmpdir": {
+          "version": "1.0.1",
+          "from": "os-tmpdir@>=1.0.1 <2.0.0",
+          "resolved": "./node_shrinkwrap/os-tmpdir-1.0.1.tgz"
+        },
+        "path-is-absolute": {
+          "version": "1.0.0",
+          "from": "path-is-absolute@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/path-is-absolute-1.0.0.tgz"
+        },
+        "private": {
+          "version": "0.1.6",
+          "from": "private@>=0.1.6 <0.2.0",
+          "resolved": "./node_shrinkwrap/private-0.1.6.tgz"
+        },
+        "regenerator-runtime": {
+          "version": "0.9.5",
+          "from": "regenerator-runtime@>=0.9.5 <0.10.0",
+          "resolved": "./node_shrinkwrap/regenerator-runtime-0.9.5.tgz"
+        },
+        "shebang-regex": {
+          "version": "1.0.0",
+          "from": "shebang-regex@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/shebang-regex-1.0.0.tgz"
+        },
+        "slash": {
+          "version": "1.0.0",
+          "from": "slash@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/slash-1.0.0.tgz"
+        },
+        "source-map": {
+          "version": "0.5.6",
+          "from": "source-map@>=0.5.0 <0.6.0",
+          "resolved": "./node_shrinkwrap/source-map-0.5.6.tgz"
+        },
+        "strip-ansi": {
+          "version": "3.0.1",
+          "from": "strip-ansi@>=3.0.1 <4.0.0",
+          "resolved": "./node_shrinkwrap/strip-ansi-3.0.1.tgz"
+        },
+        "supports-color": {
+          "version": "2.0.0",
+          "from": "supports-color@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/supports-color-2.0.0.tgz"
+        },
+        "to-fast-properties": {
+          "version": "1.0.2",
+          "from": "to-fast-properties@>=1.0.1 <2.0.0",
+          "resolved": "./node_shrinkwrap/to-fast-properties-1.0.2.tgz"
+        },
+        "user-home": {
+          "version": "1.1.1",
+          "from": "user-home@>=1.1.1 <2.0.0",
+          "resolved": "./node_shrinkwrap/user-home-1.1.1.tgz"
         }
-      }
+      },
+      "resolved": "./node_shrinkwrap/jasper-hapi-healthcheck-0.1.0.tgz"
     },
     "jasper-hapi-metrics": {
-      "version": "0.0.3",
-      "from": "jasper-hapi-metrics@0.0.3",
-      "resolved": "./node_shrinkwrap/jasper-hapi-metrics-0.0.3.tgz"
+      "version": "0.1.0",
+      "from": "jasper-hapi-metrics@>=0.1.0 <0.2.0",
+      "dependencies": {
+        "amdefine": {
+          "version": "1.0.0",
+          "from": "amdefine@>=0.0.4",
+          "resolved": "./node_shrinkwrap/amdefine-1.0.0.tgz"
+        },
+        "ansi-regex": {
+          "version": "2.0.0",
+          "from": "ansi-regex@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/ansi-regex-2.0.0.tgz"
+        },
+        "ansi-styles": {
+          "version": "2.2.1",
+          "from": "ansi-styles@>=2.2.1 <3.0.0",
+          "resolved": "./node_shrinkwrap/ansi-styles-2.2.1.tgz"
+        },
+        "babel-code-frame": {
+          "version": "6.11.0",
+          "from": "babel-code-frame@>=6.7.5 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-code-frame-6.11.0.tgz"
+        },
+        "babel-core": {
+          "version": "6.13.2",
+          "from": "babel-core@>=6.3.21 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-core-6.13.2.tgz",
+          "dependencies": {
+            "path-exists": {
+              "version": "1.0.0",
+              "from": "path-exists@>=1.0.0 <2.0.0",
+              "resolved": "./node_shrinkwrap/path-exists-1.0.0.tgz"
+            }
+          }
+        },
+        "babel-generator": {
+          "version": "6.11.4",
+          "from": "babel-generator@>=6.11.4 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-generator-6.11.4.tgz"
+        },
+        "babel-helpers": {
+          "version": "6.8.0",
+          "from": "babel-helpers@>=6.8.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-helpers-6.8.0.tgz"
+        },
+        "babel-messages": {
+          "version": "6.8.0",
+          "from": "babel-messages@>=6.8.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-messages-6.8.0.tgz"
+        },
+        "babel-register": {
+          "version": "6.11.6",
+          "from": "babel-register@>=6.11.6 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-register-6.11.6.tgz",
+          "dependencies": {
+            "path-exists": {
+              "version": "1.0.0",
+              "from": "path-exists@>=1.0.0 <2.0.0",
+              "resolved": "./node_shrinkwrap/path-exists-1.0.0.tgz"
+            },
+            "source-map": {
+              "version": "0.1.32",
+              "from": "source-map@0.1.32",
+              "resolved": "./node_shrinkwrap/source-map-0.1.32.tgz"
+            },
+            "source-map-support": {
+              "version": "0.2.10",
+              "from": "source-map-support@>=0.2.10 <0.3.0",
+              "resolved": "./node_shrinkwrap/source-map-support-0.2.10.tgz"
+            }
+          }
+        },
+        "babel-runtime": {
+          "version": "6.11.6",
+          "from": "babel-runtime@>=6.3.19 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-runtime-6.11.6.tgz"
+        },
+        "babel-template": {
+          "version": "6.9.0",
+          "from": "babel-template@>=6.9.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-template-6.9.0.tgz"
+        },
+        "babel-traverse": {
+          "version": "6.13.0",
+          "from": "babel-traverse@>=6.13.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-traverse-6.13.0.tgz"
+        },
+        "babel-types": {
+          "version": "6.13.0",
+          "from": "babel-types@>=6.13.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babel-types-6.13.0.tgz"
+        },
+        "babylon": {
+          "version": "6.8.4",
+          "from": "babylon@>=6.7.0 <7.0.0",
+          "resolved": "./node_shrinkwrap/babylon-6.8.4.tgz"
+        },
+        "balanced-match": {
+          "version": "0.4.2",
+          "from": "balanced-match@>=0.4.1 <0.5.0",
+          "resolved": "./node_shrinkwrap/balanced-match-0.4.2.tgz"
+        },
+        "brace-expansion": {
+          "version": "1.1.6",
+          "from": "brace-expansion@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/brace-expansion-1.1.6.tgz"
+        },
+        "chalk": {
+          "version": "1.1.3",
+          "from": "chalk@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/chalk-1.1.3.tgz"
+        },
+        "concat-map": {
+          "version": "0.0.1",
+          "from": "concat-map@0.0.1",
+          "resolved": "./node_shrinkwrap/concat-map-0.0.1.tgz"
+        },
+        "convert-source-map": {
+          "version": "1.3.0",
+          "from": "convert-source-map@>=1.2.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/convert-source-map-1.3.0.tgz"
+        },
+        "core-js": {
+          "version": "2.4.1",
+          "from": "core-js@>=2.4.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/core-js-2.4.1.tgz"
+        },
+        "d": {
+          "version": "0.1.1",
+          "from": "d@>=0.1.1 <0.2.0",
+          "resolved": "./node_shrinkwrap/d-0.1.1.tgz"
+        },
+        "debug": {
+          "version": "2.2.0",
+          "from": "debug@>=2.2.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/debug-2.2.0.tgz"
+        },
+        "detect-indent": {
+          "version": "3.0.1",
+          "from": "detect-indent@>=3.0.1 <4.0.0",
+          "resolved": "./node_shrinkwrap/detect-indent-3.0.1.tgz",
+          "dependencies": {
+            "minimist": {
+              "version": "1.2.0",
+              "from": "minimist@>=1.1.0 <2.0.0",
+              "resolved": "./node_shrinkwrap/minimist-1.2.0.tgz"
+            },
+            "repeating": {
+              "version": "1.1.3",
+              "from": "repeating@>=1.1.0 <2.0.0",
+              "resolved": "./node_shrinkwrap/repeating-1.1.3.tgz"
+            }
+          }
+        },
+        "es5-ext": {
+          "version": "0.10.12",
+          "from": "es5-ext@>=0.10.11 <0.11.0",
+          "resolved": "./node_shrinkwrap/es5-ext-0.10.12.tgz"
+        },
+        "es6-iterator": {
+          "version": "2.0.0",
+          "from": "es6-iterator@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/es6-iterator-2.0.0.tgz"
+        },
+        "es6-symbol": {
+          "version": "3.1.0",
+          "from": "es6-symbol@>=3.1.0 <3.2.0",
+          "resolved": "./node_shrinkwrap/es6-symbol-3.1.0.tgz"
+        },
+        "escape-string-regexp": {
+          "version": "1.0.5",
+          "from": "escape-string-regexp@>=1.0.2 <2.0.0",
+          "resolved": "./node_shrinkwrap/escape-string-regexp-1.0.5.tgz"
+        },
+        "esutils": {
+          "version": "2.0.2",
+          "from": "esutils@>=2.0.2 <3.0.0",
+          "resolved": "./node_shrinkwrap/esutils-2.0.2.tgz"
+        },
+        "get-stdin": {
+          "version": "4.0.1",
+          "from": "get-stdin@>=4.0.1 <5.0.0",
+          "resolved": "./node_shrinkwrap/get-stdin-4.0.1.tgz"
+        },
+        "globals": {
+          "version": "8.18.0",
+          "from": "globals@>=8.3.0 <9.0.0",
+          "resolved": "./node_shrinkwrap/globals-8.18.0.tgz"
+        },
+        "has-ansi": {
+          "version": "2.0.0",
+          "from": "has-ansi@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/has-ansi-2.0.0.tgz"
+        },
+        "home-or-tmp": {
+          "version": "1.0.0",
+          "from": "home-or-tmp@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/home-or-tmp-1.0.0.tgz"
+        },
+        "invariant": {
+          "version": "2.2.1",
+          "from": "invariant@>=2.2.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/invariant-2.2.1.tgz"
+        },
+        "is-finite": {
+          "version": "1.0.1",
+          "from": "is-finite@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/is-finite-1.0.1.tgz"
+        },
+        "js-tokens": {
+          "version": "2.0.0",
+          "from": "js-tokens@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/js-tokens-2.0.0.tgz"
+        },
+        "json5": {
+          "version": "0.4.0",
+          "from": "json5@>=0.4.0 <0.5.0",
+          "resolved": "./node_shrinkwrap/json5-0.4.0.tgz"
+        },
+        "lodash": {
+          "version": "4.14.1",
+          "from": "lodash@>=4.2.0 <5.0.0",
+          "resolved": "./node_shrinkwrap/lodash-4.14.1.tgz"
+        },
+        "loose-envify": {
+          "version": "1.2.0",
+          "from": "loose-envify@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/loose-envify-1.2.0.tgz",
+          "dependencies": {
+            "js-tokens": {
+              "version": "1.0.3",
+              "from": "js-tokens@>=1.0.1 <2.0.0",
+              "resolved": "./node_shrinkwrap/js-tokens-1.0.3.tgz"
+            }
+          }
+        },
+        "minimatch": {
+          "version": "3.0.2",
+          "from": "minimatch@>=3.0.2 <4.0.0",
+          "resolved": "./node_shrinkwrap/minimatch-3.0.2.tgz"
+        },
+        "minimist": {
+          "version": "0.0.8",
+          "from": "minimist@0.0.8",
+          "resolved": "./node_shrinkwrap/minimist-0.0.8.tgz"
+        },
+        "mkdirp": {
+          "version": "0.5.1",
+          "from": "mkdirp@>=0.5.1 <0.6.0",
+          "resolved": "./node_shrinkwrap/mkdirp-0.5.1.tgz"
+        },
+        "ms": {
+          "version": "0.7.1",
+          "from": "ms@0.7.1",
+          "resolved": "./node_shrinkwrap/ms-0.7.1.tgz"
+        },
+        "number-is-nan": {
+          "version": "1.0.0",
+          "from": "number-is-nan@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/number-is-nan-1.0.0.tgz"
+        },
+        "os-tmpdir": {
+          "version": "1.0.1",
+          "from": "os-tmpdir@>=1.0.1 <2.0.0",
+          "resolved": "./node_shrinkwrap/os-tmpdir-1.0.1.tgz"
+        },
+        "path-is-absolute": {
+          "version": "1.0.0",
+          "from": "path-is-absolute@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/path-is-absolute-1.0.0.tgz"
+        },
+        "private": {
+          "version": "0.1.6",
+          "from": "private@>=0.1.6 <0.2.0",
+          "resolved": "./node_shrinkwrap/private-0.1.6.tgz"
+        },
+        "regenerator-runtime": {
+          "version": "0.9.5",
+          "from": "regenerator-runtime@>=0.9.5 <0.10.0",
+          "resolved": "./node_shrinkwrap/regenerator-runtime-0.9.5.tgz"
+        },
+        "shebang-regex": {
+          "version": "1.0.0",
+          "from": "shebang-regex@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/shebang-regex-1.0.0.tgz"
+        },
+        "slash": {
+          "version": "1.0.0",
+          "from": "slash@>=1.0.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/slash-1.0.0.tgz"
+        },
+        "source-map": {
+          "version": "0.5.6",
+          "from": "source-map@>=0.5.0 <0.6.0",
+          "resolved": "./node_shrinkwrap/source-map-0.5.6.tgz"
+        },
+        "strip-ansi": {
+          "version": "3.0.1",
+          "from": "strip-ansi@>=3.0.1 <4.0.0",
+          "resolved": "./node_shrinkwrap/strip-ansi-3.0.1.tgz"
+        },
+        "supports-color": {
+          "version": "2.0.0",
+          "from": "supports-color@>=2.0.0 <3.0.0",
+          "resolved": "./node_shrinkwrap/supports-color-2.0.0.tgz"
+        },
+        "to-fast-properties": {
+          "version": "1.0.2",
+          "from": "to-fast-properties@>=1.0.1 <2.0.0",
+          "resolved": "./node_shrinkwrap/to-fast-properties-1.0.2.tgz"
+        },
+        "user-home": {
+          "version": "1.1.1",
+          "from": "user-home@>=1.1.1 <2.0.0",
+          "resolved": "./node_shrinkwrap/user-home-1.1.1.tgz"
+        }
+      },
+      "resolved": "./node_shrinkwrap/jasper-hapi-metrics-0.1.0.tgz"
     },
     "jodid25519": {
       "version": "1.0.2",

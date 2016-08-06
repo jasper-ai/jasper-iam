@@ -14,10 +14,17 @@ const path = require('path')
 const pkg = require('../package')
 const shrinkwrap = require('../npm-shrinkwrap')
 
+function removeDeps (deps, name) {
+  Object.keys(deps).forEach((dep) => {
+    if (dep === name) delete deps[dep]
+    else if (deps[dep].dependencies) removeDeps(deps[dep].dependencies, name)
+  })
+}
+
 const optionals = Object.keys(pkg.optionalDependencies || [])
 optionals.forEach((name) => {
   console.log(`Ensuring optional dependency "${name}" is removed`)
-  delete shrinkwrap.dependencies[name]
+  removeDeps(shrinkwrap.dependencies, name)
 })
 
 fs.writeFileSync(
