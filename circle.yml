@@ -15,12 +15,14 @@ dependencies:
     - ~/docker
   override:
     - docker info
-    - docker build -t jasper-ai/jasper-iam:$CIRCLE_SHA1 .
 
 test:
+  pre:
+    - docker build -t jasper-ai/jasper-iam:$CIRCLE_SHA1 .
+    - docker build -f Dockerfile-test -t jasper-ai/jasper-iam-test:$CIRCLE_SHA1 .
   override:
     - |
-      docker run jasper-ai/jasper-iam:$CIRCLE_SHA1 npm run audit || true
+      docker run jasper-ai/jasper-iam-test:$CIRCLE_SHA1 npm run audit
     - |
       docker run \
         --net=host \
@@ -31,9 +33,9 @@ test:
         --env DATABASE_NAME=$DATABASE_NAME \
         --env DATABASE_USER=$DATABASE_USER \
         --env CODECOV_TOKEN=$CODECOV_TOKEN \
-        jasper-ai/jasper-iam:$CIRCLE_SHA1 npm run test:coverage
+        jasper-ai/jasper-iam-test:$CIRCLE_SHA1 npm run test:coverage
     - |
-      docker run \
+      docker run -d \
         -p 3000:3000 \
         --net=host \
         --env NODE_ENV=$NODE_ENV \
