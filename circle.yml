@@ -5,7 +5,7 @@ machine:
     - docker
   post:
     - sudo service postgresql stop
-    - sudo service redis stop
+    - sudo service redis-server stop
 
 dependencies:
   override:
