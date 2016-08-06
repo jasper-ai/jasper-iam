@@ -7,11 +7,11 @@ dependencies:
     - "~/docker"
   override:
     - docker info
+    - sudo pip install docker
     - sudo pip install docker-compose
 
 test:
   override:
-    - npm run audit
     - bin/docker-test
     - docker-compose up -d; sleep 10
     - curl --retry 10 --retry-delay 5 -v http://localhost:3000/healthcheck
