@@ -8,10 +8,6 @@ module.exports = {
       user: process.env.DATABASE_USER,
       password: process.env.DATABASE_ACCESS_KEY
     },
-    pool: {
-      min: 2,
-      max: 10
-    },
     migrations: {
       directory: './db/migrations',
       tableName: 'knex_migrations'
@@ -30,10 +26,6 @@ module.exports = {
       user: process.env.DATABASE_USER,
       password: process.env.DATABASE_ACCESS_KEY
     },
-    pool: {
-      min: 2,
-      max: 10
-    },
     migrations: {
       directory: './db/migrations',
       tableName: 'knex_migrations'
@@ -51,10 +43,6 @@ module.exports = {
       database: process.env.DATABASE_NAME,
       user: process.env.DATABASE_USER,
       password: process.env.DATABASE_ACCESS_KEY
-    },
-    pool: {
-      min: 2,
-      max: 10
     },
     migrations: {
       directory: './db/migrations',

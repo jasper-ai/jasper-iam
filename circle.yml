@@ -3,11 +3,11 @@ machine:
     - docker
   environment:
     NODE_ENV: test
-    SECRET: secret
+    SECRET: SECRET
     DATABASE_HOST: localhost
     DATABASE_PORT: 3306
     DATABASE_NAME: circle_test
-    DATABASE_USER: ubuntu
+    DATABASE_USER: postgres
     REDIS_HOST: localhost
     REDIS_PORT: 6379
     REDIS_PARTITION: test
