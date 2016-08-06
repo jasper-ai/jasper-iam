@@ -3,9 +3,9 @@ machine:
     - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
   services:
     - docker
-  post:
-    - sudo service postgresql stop
-    - sudo service redis-store stop
+  # post:
+  #   - sudo service postgresql stop
+  #   - sudo service redis-store stop
 
 dependencies:
   override:
@@ -15,7 +15,7 @@ dependencies:
 
 test:
   override:
-    - bin/docker-test
+    - docker-compose -f docker-compose-test.yml run jasper-iam-test "npm run test:coverage"
     - docker-compose up -d; sleep 10
     - curl --retry 10 --retry-delay 5 -v http://localhost:3000/healthcheck
 
