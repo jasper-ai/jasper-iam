@@ -33,7 +33,7 @@ test:
         --env CODECOV_TOKEN=$CODECOV_TOKEN \
         jasper-ai/jasper-iam:$CIRCLE_SHA1 npm run test:coverage
     - |
-      docker run -d \
+      docker run \
         -p 3000:3000 \
         --net=host \
         --env NODE_ENV=$NODE_ENV \
