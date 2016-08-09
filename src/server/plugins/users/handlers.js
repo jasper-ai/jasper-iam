@@ -1,171 +1,195 @@
-import assign from 'lodash.assign'
-
 import { User } from '../../../orm'
 
-function deleteUser (user) {
+async function deleteUser (user) {
   return user.archive()
 }
 
-function patchUser (user, payload, hasher) {
+async function patchUser (user: User, payload: Object) {
   if (!payload.password) return user.save(payload, { patch: true })
 
-  return hasher(payload.password)
-    .then((hashed) => assign({}, payload, { password: hashed }))
-    .then((data) => user.save(data, { patch: true }))
+  const hash = await User.hashPassword(payload.password)
+  return user.save({ ...payload, password: hash }, { patch: true })
 }
 
-function putUser (user, payload, hasher) {
+async function putUser (user: User, payload: Object) {
   if (!payload.password) return user.save(payload)
 
-  return hasher(payload.password)
-    .then((hashed) => assign({}, payload, { password: hashed }))
-    .then((data) => user.save(data))
+  const hash = await User.hashPassword(payload.password)
+  return user.save({ ...payload, password: hash })
 }
 
-export function getUserHandler (req, reply) {
+export async function getUserHandler (req, reply) {
   const { id } = req.params
 
-  new User({ id, active: true })
-    .fetch({ require: true })
-    .then((user) => reply({
-      user: user.omit(['_roles']),
+  try {
+    const user: User = await new User({ id, active: true }).fetch({ require: true })
+
+    reply({
+      user: user.omit(['password', '_roles']),
       success: true,
       timestamp: Date.now()
-    }))
-    .catch((error) => reply({
+    })
+  } catch (error) {
+    reply({
       success: false,
       error: error.name,
       message: error.message,
       timestamp: Date.now()
-    }))
+    }).code(401)
+  }
 }
 
-export function getUsersHandler (req, reply) {
-  User.collection()
-    .query({ where: { active: true } })
-    .fetch()
-    .then((users) => reply({
-      users: users.omit(['_roles']),
+export async function getUsersHandler (req, reply) {
+  try {
+    const users = await User.collection()
+      .query({ where: { active: true } })
+      .fetch()
+
+    reply({
+      users: users.omit(['password', '_roles']),
       success: true,
       timestamp: Date.now()
-    }))
-    .catch((error) => reply({
+    })
+  } catch (error) {
+    reply({
       success: false,
       error: error.name,
       message: error.message,
       timestamp: Date.now()
-    }))
+    }).code(401)
+  }
 }
 
-export function getUserTokensHandler (req, reply) {
+export async function getUserTokensHandler (req, reply) {
   const { id } = req.params
 
-  new User({ id, active: true })
-    .fetch({ require: true, withRelated: ['tokens'] })
-    .then((user) => user.related('tokens'))
-    .then((tokens) => reply({
+  try {
+    const user = await new User({ id, active: true })
+      .fetch({ require: true, withRelated: ['tokens'] })
+    const tokens = await user.related('tokens')
+
+    reply({
       tokens,
       success: true,
       user: id,
       timestamp: Date.now()
-    }))
-    .catch((error) => reply({
+    })
+  } catch (error) {
+    reply({
       success: false,
       error: error.name,
       message: error.message,
       timestamp: Date.now()
-    }))
+    }).code(401)
+  }
 }
 
-export function deleteUserTokenHandler (req, reply) {
+export async function deleteUserTokenHandler (req, reply) {
   const { id, tokenId } = req.params
 
-  new User({ id, active: true })
-    .fetch({ require: true })
-    .then((user) => user.tokens()
+  try {
+    const user = new User({ id, active: true })
+      .fetch({ require: true })
+    const token = user.tokens()
       .query({ where: { id: tokenId } })
-      .fetchOne())
-    .then((token) => token.destroy())
-    .then(() => reply({
+      .fetchOne()
+
+    await token.destroy()
+
+    reply({
       success: true,
       timestamp: Date.now()
-    }))
-    .catch((error) => reply({
+    })
+  } catch (error) {
+    reply({
       success: false,
       error: error.name,
       message: error.message,
       timestamp: Date.now()
-    }))
+    }).code(401)
+  }
 }
 
-export function createUserHandler (req, reply) {
-  User.forge(req.payload)
-    .save()
-    .then((user) => reply({
+export async function createUserHandler (req, reply) {
+  try {
+    const user = await User.forge(req.payload).save()
+
+    reply({
       success: true,
-      user: user.id,
+      user: user.omit(['password', '_roles']),
       timestamp: Date.now()
-    }))
-    .catch((error) => reply({
+    })
+  } catch (error) {
+    reply({
       success: false,
       error: error.name,
       message: error.message,
       timestamp: Date.now()
-    }))
+    }).code(401)
+  }
 }
 
-export function patchUserHandler (req, reply) {
+export async function patchUserHandler (req, reply) {
   const { id } = req.params
 
-  new User({ id, active: true })
-    .fetch({ require: true })
-    .then((user) => patchUser(user, req.payload, req.server.methods.hash))
-    .then((user) => reply({
+  try {
+    const user = await new User({ id, active: true }).fetch({ require: true })
+    const updatedUser = await patchUser(user, req.payload)
+
+    reply({
       success: true,
-      user: user.id,
+      user: updatedUser.omit(['password', '_roles']),
       timestamp: Date.now()
-    }))
-    .catch((error) => reply({
+    })
+  } catch (error) {
+    reply({
       success: false,
       error: error.name,
       message: error.message,
       timestamp: Date.now()
-    }))
+    }).code(401)
+  }
 }
 
-export function putUserHandler (req, reply) {
+export async function putUserHandler (req, reply) {
   const { id } = req.params
 
-  new User({ id, active: true })
-    .fetch({ require: true })
-    .then((user) => putUser(user, req.payload, req.server.methods.hash))
-    .then((user) => reply({
+  try {
+    const user = new User({ id, active: true }).fetch({ require: true })
+    const updatedUser = putUser(user, req.payload)
+
+    reply({
       success: true,
-      user: user.id,
+      user: updatedUser.omit(['password', '_roles']),
       timestamp: Date.now()
-    }))
-    .catch((error) => reply({
+    })
+  } catch (error) {
+    reply({
       success: false,
       error: error.name,
       message: error.message,
       timestamp: Date.now()
-    }))
+    }).code(401)
+  }
 }
 
-export function deleteUserHandler (req, reply) {
+export async function deleteUserHandler (req, reply) {
   const { id } = req.params
 
-  new User({ id, active: true })
-    .fetch({ require: true })
-    .then((user) => deleteUser(user))
-    .then(() => reply({
+  try {
+    const user = new User({ id, active: true }).fetch({ require: true })
+    await deleteUser(user)
+
+    reply({
       success: true,
       timestamp: Date.now()
-    }))
-    .catch((error) => reply({
+    })
+  } catch (error) {
+    reply({
       success: false,
       error: error.name,
       message: error.message,
       timestamp: Date.now()
-    }))
+    }).code(401)
+  }
 }

@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs'
 
 import { User } from './index'
 
-function hash (password) {
+async function hash (password: string) {
   return new Promise((resolve, reject) => {
     bcrypt.genSalt(10, (error, salt) => {
       if (error) {
@@ -23,67 +23,41 @@ function hash (password) {
   })
 }
 
-test('authentication with valid creds', (t) => {
-  return new Promise((resolve, reject) => {
-    hash('test')
-      .then((hashed) => {
-        User.forge({
-          email: 'test@jasperdoes.xyz',
-          password: hashed,
-          roles: ['worker-user']
-        })
-        .save()
-        .then((user) => {
-          const expected = user.get('id')
+test('authentication with valid creds', async (t) => {
+  const hashed = await hash('test')
+  const user = await User.forge({
+    email: 'test@jasperdoes.xyz',
+    password: hashed,
+    roles: ['worker-user']
+  }).save()
+  const expected = user.get('id')
 
-          return User
-            .authenticate('test@jasperdoes.xyz', 'test')
-            .then((authedUser) => {
-              const actual = authedUser.get('id')
-              t.is(expected, actual)
-            })
-            .then(() => user.tokens().invokeThen('destroy'))
-            .then(() => user.destroy())
-            .then(() => resolve())
-            .catch((error) => reject(error))
-        })
-        .catch((error) => reject(error))
-      })
-  })
+  const authedUser = await User.authenticate('test@jasperdoes.xyz', 'test')
+  const actual = authedUser.get('id')
+
+  t.is(expected, actual)
+  await user.tokens().invokeThen('destroy')
+  await user.destroy()
 })
 
-test('authentication with invalid creds', (t) => {
-  let userModel
-  return new Promise((resolve, reject) => {
-    User.forge({
-      email: 'test@jasper.xyz',
-      password: 'test',
-      roles: ['worker-user']
-    })
-    .save()
-    .then((user) => {
-      userModel = user
+test('authentication with invalid creds', async (t) => {
+  const user = await User.forge({
+    email: 'test@jasper.xyz',
+    password: 'test',
+    roles: ['worker-user']
+  }).save()
 
-      User
-        .authenticate('test@jasperdoes.xyz', 'wrong')
-        .then(() => {
-          t.fail('user should not be authenticated with incorrect email')
-          resolve()
-        })
-        .catch((error) => {
-          if (error.message === 'Incorrect Username or Password!') {
-            t.pass('fails with "Incorrect Username or Password!" error')
-          }
+  try {
+    await User.authenticate('test@jasperdoes.xyz', 'wrong')
+    t.fail('user should not be authenticated with incorrect email')
+  } catch (error) {
+    if (error.message === 'Incorrect Username or Password!') {
+      t.pass('fails with "Incorrect Username or Password!" error')
+    } else {
+      t.fail(error.message)
+    }
+  }
 
-          const promises = [
-            userModel.tokens().invokeThen('destroy'),
-            userModel.destroy()
-          ]
-
-          Promise.all(promises)
-            .then(() => resolve())
-            .catch((error) => reject(error))
-        })
-    })
-  })
+  await user.tokens().invokeThen('destroy')
+  await user.destroy()
 })

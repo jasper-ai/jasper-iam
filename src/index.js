@@ -1,5 +1,11 @@
+import hapi from 'hapi'
 import { getServer, loadPlugins, start } from './server'
 
-loadPlugins(getServer())
-  .then((server) => start(server))
-  .catch((err) => console.error(err))
+const server: hapi.Server = getServer()
+
+try {
+  loadPlugins(server)
+  start(server)
+} catch (error) {
+  console.error(error)
+}

@@ -12,7 +12,7 @@ Promise.all([
   users.fetch(),
   tokens.fetch(),
   loadPlugins(server)
-]).then((results) => {
+]).then(results => {
   const replServer = repl.start({
     prompt: `Jasper API (${process.env.NODE_ENV}): `
   })
@@ -25,4 +25,4 @@ Promise.all([
 
   replServer.context.server = server
 })
-.catch((err) => console.log(err))
+.catch(err => console.log(err))

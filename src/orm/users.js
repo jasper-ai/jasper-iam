@@ -3,19 +3,19 @@ import bcrypt from 'bcryptjs'
 import orm from './orm'
 
 class UnauthorizedError extends Error {
-  constructor (message = 'Unauthorized!') {
+  constructor (message: string = 'Unauthorized!') {
     super(message)
     this.message = message
     this.name = 'UnauthorizedError'
   }
 }
 
-function archiveDependencies (model) {
-  model.tokens().fetch()
-    .then((tokens) => tokens.invokeThen('archive'))
+async function archiveDependencies (model: User) {
+  const tokens = await model.tokens().fetch()
+  return tokens.invokeThen('archive')
 }
 
-function comparePassword (password, user) {
+async function comparePassword (password: string, user: User): Promise {
   return new Promise((resolve, reject) => {
     bcrypt.compare(password, user.get('password'), (error, same) => {
       if (error) {
@@ -29,6 +29,26 @@ function comparePassword (password, user) {
       }
 
       resolve(user)
+    })
+  })
+}
+
+function hashPassword (password: string): Promise {
+  return new Promise((resolve, reject) => {
+    bcrypt.genSalt(10, (error, salt) => {
+      if (error) {
+        reject(error)
+        return
+      }
+
+      bcrypt.hash(password, salt, (error, hash) => {
+        if (error) {
+          reject(error)
+          return
+        }
+
+        resolve(null, hash)
+      })
     })
   })
 }
@@ -55,7 +75,7 @@ const config = {
     const thirtyDays = new Date().setDate(today.getDate() - 30)
 
     return this.hasMany('Token')
-      .query((queryBuilder) =>
+      .query(queryBuilder =>
         queryBuilder
           .where('last_used', '>', thirtyDays)
           .andWhere({ active: true }))
@@ -66,7 +86,7 @@ const config = {
     const thirtyDays = new Date().setDate(today.getDate() - 30)
 
     return this.hasMany('Token')
-      .query((queryBuilder) =>
+      .query(queryBuilder =>
         queryBuilder
           .where('last_used', '>', thirtyDays)
           .orWhere({ active: false }))
@@ -83,10 +103,11 @@ const config = {
 }
 
 const statics = {
-  authenticate (email, password) {
+  hashPassword,
+  authenticate (email: string, password: string) {
     return new this({ email, active: true })
       .fetch({ require: true })
-      .then((user) => comparePassword(password, user))
+      .then(user => comparePassword(password, user))
   }
 }
 

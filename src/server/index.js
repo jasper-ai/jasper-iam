@@ -2,7 +2,7 @@ import Hapi from 'hapi'
 
 import serverConfig from './config'
 
-export const getServer = () => {
+export function getServer () {
   const server = new Hapi.Server({
     connections: {
       routes: {
@@ -18,20 +18,24 @@ export const getServer = () => {
   return server
 }
 
-export const loadPlugins = (server) => new Promise((resolve, reject) => {
-  server.register(serverConfig, (error) => {
-    if (error) {
-      reject(error)
-      return
-    }
+export async function loadPlugins (server) {
+  return new Promise((resolve, reject) => {
+    server.register(serverConfig, (error) => {
+      if (error) {
+        reject(error)
+        return
+      }
 
-    resolve(server)
+      resolve(server)
+    })
   })
-})
+}
 
-export const start = (server) => new Promise((resolve, reject) => {
-  server.start((error) => {
-    if (error) return reject(error)
-    resolve(server)
+export async function start (server) {
+  return new Promise((resolve, reject) => {
+    server.start(error => {
+      if (error) return reject(error)
+      resolve(server)
+    })
   })
-})
+}

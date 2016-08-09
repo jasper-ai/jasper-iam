@@ -13,14 +13,12 @@ const developmentPlugins = [
   { register: require('hapi-pino') },
 
   // app
-  { register: require('./plugins/methods') },
   { register: require('./plugins/auth') },
   { register: require('./plugins/users') }
 ]
 
 const testPlugins = [
   // app
-  { register: require('./plugins/methods') },
   { register: require('./plugins/auth') },
   { register: require('./plugins/users') }
 ]
@@ -35,7 +33,6 @@ const productionPlugins = [
   { register: require('hapi-swagger') },
 
   // app
-  { register: require('./plugins/methods') },
   { register: require('./plugins/auth') },
   { register: require('./plugins/users') }
 ]

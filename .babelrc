@@ -1,4 +1,5 @@
 {
-  "presets": ["es2015"],
+  "presets": ["stage-2", "es2015"],
+  "plugins": ["transform-flow-strip-types", "transform-runtime"],
   "sourceMaps": "inline"
 }

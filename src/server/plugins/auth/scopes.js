@@ -1,6 +1,6 @@
 import keymirror from 'keymirror'
 
-// scope === <service>:<domain(s)>:action
+// scope === <service>:[<domain(s)>]:action
 export default keymirror({
   'iam:auth:check': null,
   'iam:authenticate': null,

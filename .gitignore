@@ -1,5 +1,5 @@
 node_modules
-lib
+build
 local-data
 .nyc_output
 coverage*

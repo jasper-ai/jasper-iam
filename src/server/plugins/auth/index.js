@@ -1,12 +1,17 @@
 import Joi from 'joi'
 
-import { validateToken, getScopes } from './helpers'
+import {
+  validateToken,
+  getScopes
+} from './helpers'
+
 import {
   authBasicHandler,
   authTokenHandler,
   authenticateHandler,
   passwordResetHandler
 } from './handlers'
+
 import { User, Token } from '../../../orm'
 
 const authBasicPayloadSchema = {
@@ -24,29 +29,46 @@ const resetPasswordPayloadSchema = {
 }
 
 // validate function for basic auth plugin
-function basic (request, email, password, next) {
-  User.authenticate(email, password)
-    .then((user) => next(null, true, {
-      user,
-      scope: getScopes(user.get('roles')),
-      authType: 'basic'
-    }))
-    .catch((error) => next(error, false))
+async function basic (
+  request: Object,
+  email: string,
+  password: string,
+  next: Function
+): Promise {
+  try {
+    const user: User = await User.authenticate(email, password)
+    const scope: Array<string> = getScopes(user.get('roles'))
+
+    next(null, true, { user, scope, authType: 'basic' })
+  } catch (error) {
+    next(error, false)
+  }
 }
 
 // validate function for JWT plugin
-function jwt (decoded, request, next) {
-  Token
-    .where({ cuid: decoded.cuid })
-    .fetch({ require: true, withRelated: ['user'] })
-    .then(validateToken)
-    .then((token) => token.related('user'))
-    .then((user) => next(null, true, {
-      user,
-      scope: getScopes(user.get('roles')),
-      authType: 'jwt'
-    }))
-    .catch((error) => next(error, false))
+async function jwt (
+  decoded: Object,
+  request: Object,
+  next: Function
+): Promise {
+  try {
+    const token: Token = await Token
+      .where({ cuid: decoded.cuid })
+      .fetch({ require: true, withRelated: ['user'] })
+
+    await validateToken(token)
+
+    const user: User = await token.related('user')
+    const scope: Array<string> = getScopes(user.get('roles'))
+
+    next(null, true, { user, scope, authType: 'jwt' })
+  } catch (error) {
+    if (error.message === 'EmptyResponse') {
+      next(null, false)
+    } else {
+      next(error, false)
+    }
+  }
 }
 
 export const register = (server, options, next) => {

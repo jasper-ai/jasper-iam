@@ -13,14 +13,16 @@ const mgConfig = {
 
 const mailer = nodemailer.createTransport(mg(mgConfig))
 
-const sendMail = (messageConfig) => new Promise((resolve, reject) => {
-  mailer.sendMail(messageConfig, (error, info) => {
-    if (error) return reject(error)
-    resolve(info)
+async function sendMail (messageConfig: any): Promise {
+  return new Promise((resolve, reject) => {
+    mailer.sendMail(messageConfig, (error, info) => {
+      if (error) return reject(error)
+      resolve(info)
+    })
   })
-})
+}
 
-function getEmailText (url, token) {
+function getEmailText (url: string, token: string): string {
   return `
   Here is the link to reset your password!
 
@@ -33,106 +35,110 @@ function getEmailText (url, token) {
   `
 }
 
-export function authBasicHandler (req, reply) {
+export async function authBasicHandler (req, reply) {
   const { email, password } = req.payload
 
-  User
-    .authenticate(email, password)
-    .then((user) => {
-      reply({
-        success: true,
-        user: user.id,
-        scope: getScopes(user.get('roles')),
-        timestamp: Date.now()
-      })
+  try {
+    const user: User = await User.authenticate(email, password)
+
+    reply({
+      success: true,
+      user: user.id,
+      scope: getScopes(user.get('roles')),
+      timestamp: Date.now()
     })
-    .catch((error) => reply({
+  } catch (error) {
+    reply({
       success: false,
       error: error.name,
       message: error.message,
       timestamp: Date.now()
-    }))
+    }).code(401)
+  }
 }
 
-export function authTokenHandler (req, reply) {
+export async function authTokenHandler (req, reply) {
   const { cuid } = req.payload
 
-  new Token({ cuid })
-    .fetch({ require: true, withRelated: ['users'] })
-    .then(validateToken)
-    .then((token) => token.related('users'))
-    .then((user) => {
-      reply({
-        success: true,
-        user: user.id,
-        scope: getScopes(user.roles),
-        timestamp: Date.now()
-      })
+  try {
+    const token: Token = await new Token({ cuid })
+      .fetch({ require: true, withRelated: ['users'] })
+
+    await validateToken(token)
+
+    const user: User = token.related('users')
+
+    reply({
+      success: true,
+      user: user.id,
+      scope: getScopes(user.get('roles')),
+      timestamp: Date.now()
     })
-    .catch((error) => reply({
+  } catch (error) {
+    reply({
       success: false,
       error: error.name,
       message: error.message,
       timestamp: Date.now()
-    }))
+    }).code(401)
+  }
 }
 
-export function authenticateHandler (req, reply) {
+export async function authenticateHandler (req, reply) {
   const { email, password } = req.payload
 
-  User
-    .authenticate(email, password)
-    .then((user) => {
-      // cull all non active tokens on successful login
-      user.inactiveTokens()
-        .fetch()
-        .then((tokens) => tokens.invokeThen('destroy'))
+  try {
+    const user: User = await User.authenticate(email, password)
+    const token: Token = await Token.tokenize(user.get('id'))
 
-      return Token.tokenize(user.get('id'))
-        .then((token) => {
-          reply({
-            success: true,
-            payload: {
-              token,
-              user: user.get('id'),
-              scope: getScopes(user.get('roles'))
-            },
-            timestamp: Date.now()
-          })
-        })
+    reply({
+      success: true,
+      payload: {
+        token,
+        user: user.id,
+        scope: getScopes(user.get('roles'))
+      },
+      timestamp: Date.now()
     })
-    .catch((error) => reply({
+
+    const inactiveTokens = await user.inactiveTokens().fetch()
+    inactiveTokens.invokeThen('destroy')
+  } catch (error) {
+    reply({
       success: false,
       error: error.name,
       message: error.message,
       timestamp: Date.now()
-    }))
+    }).code(401)
+  }
 }
 
-export function passwordResetHandler (req, reply) {
+export async function passwordResetHandler (req, reply) {
   const { email, url } = req.payload
 
-  new User({ email, active: true })
-    .fetch({ require: true })
-    .then((user) => Token.tokenize(user.get('id')))
-    .then((token) => {
-      const messageConfig = {
-        to: email,
-        from: 'no-reply@jasperdoes.xyz',
-        subject: 'Jasper AI - Reset Password',
-        text: getEmailText(url, token)
-      }
+  try {
+    const user: User = new User({ email, active: true })
+      .fetch({ require: true })
+    const token: Token = await Token.tokenize(user.get('id'))
+    const messageConfig = {
+      to: email,
+      from: 'no-reply@jasperdoes.xyz',
+      subject: 'Jasper AI - Reset Password',
+      text: getEmailText(url, token)
+    }
 
-      return sendMail(messageConfig)
-    })
-    .then(() => reply({
+    await sendMail(messageConfig)
+
+    reply({
       success: true,
       timestamp: Date.now()
-    }))
-    .catch((error) => reply({
+    })
+  } catch (error) {
+    reply({
       success: false,
       error: error.name,
       message: error.message,
       timestamp: Date.now()
-    }))
+    }).code(401)
+  }
 }

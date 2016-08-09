@@ -29,11 +29,11 @@ const statics = {
     const unique = cuid()
 
     return new Promise((resolve, reject) => {
-      this.forge({ cuid: unique, user_id: userId })
-        .save()
-        .then(() => jwt.sign({ cuid: unique }, process.env.SECRET || 'SECRET'))
-        .then((token) => resolve(token))
-        .catch((error) => reject(error))
+      this.forge({ cuid: unique, user_id: userId }).save()
+        .then(token =>
+          jwt.sign({ cuid: token.get('cuid') }, process.env.SECRET || 'SECRET'))
+        .then(jwt => resolve(jwt))
+        .catch(error => reject(error))
     })
   }
 }
