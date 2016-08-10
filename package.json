@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "Identity and auth management for Jasper, a personal assistant bot",
   "main": "build/index.js",
-  "bin": {
-    "jasper-iam": "bin/repl"
-  },
   "scripts": {
     "audit": "nsp check",
     "compile": "rimraf build && babel src --out-dir build --source-maps inline",
