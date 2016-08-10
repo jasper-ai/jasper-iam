@@ -10,27 +10,43 @@ class UnauthorizedError extends Error {
   }
 }
 
-async function archiveDependencies (model: User) {
-  const tokens = await model.tokens().fetch()
-  return tokens.invokeThen('archive')
-}
-
-async function comparePassword (password: string, user: User): Promise {
+function validatePassword (given: string, actual: string): Promise {
   return new Promise((resolve, reject) => {
-    bcrypt.compare(password, user.get('password'), (error, same) => {
+    bcrypt.compare(given, actual, (error, same) => {
       if (error) {
         reject(error)
         return
       }
 
-      if (!same) {
-        reject(new UnauthorizedError('Incorrect Username or Password!'))
-        return
-      }
-
-      resolve(user)
+      resolve(same)
     })
   })
+}
+
+async function authenticate (email: string, password: string): Promise {
+  let user
+  let valid
+
+  try {
+    user = await new this()
+      .where({ email, active: true })
+      .fetch({ require: true })
+  } catch (error) {
+    if (error.message === 'EmptyResponse') {
+      return Promise.reject(new UnauthorizedError())
+    }
+
+    return Promise.reject(error)
+  }
+
+  try {
+    valid = await validatePassword(password, user.get('password'))
+  } catch (error) {
+    return Promise.reject(error)
+  }
+
+  if (!valid) return Promise.reject(new UnauthorizedError())
+  return Promise.resolve(user)
 }
 
 function hashPassword (password: string): Promise {
@@ -51,6 +67,11 @@ function hashPassword (password: string): Promise {
       })
     })
   })
+}
+
+async function archiveDependencies (model: User): Promise {
+  const tokens = await model.tokens().fetch()
+  return tokens.invokeThen('archive')
 }
 
 const config = {
@@ -104,15 +125,7 @@ const config = {
   }
 }
 
-const statics = {
-  hashPassword,
-  authenticate (email: string, password: string) {
-    return new this()
-      .where({ email, active: true })
-      .fetch({ require: true })
-      .then(user => comparePassword(password, user))
-  }
-}
+const statics = { authenticate, hashPassword }
 
 export const User = orm.Model.extend(config, statics)
 orm.model('User', User)

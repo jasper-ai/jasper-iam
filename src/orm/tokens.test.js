@@ -7,23 +7,19 @@ let user
 
 test.beforeEach(async t => {
   user = await User.forge({
-    email: 'user.token@jasperdoes.xyz',
+    email: 'jasper-test-orm-tokens@jasperdoes.xyz',
     password: 'test',
     roles: ['worker-user']
   }).save()
 })
 
 test.afterEach.always(async t => {
-  if (user) {
-    const tokens = await user.tokens().fetch()
-    await tokens.invokeThen('destroy')
-    return user.destroy()
-  }
-
-  return Promise.resolve()
+  const tokens = await user.tokens().fetch()
+  await tokens.invokeThen('destroy')
+  return user.destroy()
 })
 
-test.serial('[Token.tokenize] [Static]', async t => {
+test.serial('[Token.tokenize]', async t => {
   const token = await Token.tokenize(user.id)
   const decoded = jwt.verify(token, process.env.SECRET)
 
@@ -33,7 +29,7 @@ test.serial('[Token.tokenize] [Static]', async t => {
   t.is(expected, actual, 'returns a token for the passed in user')
 })
 
-test.serial('[Token.isExpired] [Method] with unexpired token', async t => {
+test.serial('[Token.isExpired] with unexpired token', async t => {
   await Token.tokenize(user.id)
 
   const tokens = await Token.collection().fetch()
@@ -45,7 +41,7 @@ test.serial('[Token.isExpired] [Method] with unexpired token', async t => {
   t.is(expected, actual, 'returns false if token IS NOT expired')
 })
 
-test.serial('[Token.isExpired] [Method] with expired token', async t => {
+test.serial('[Token.isExpired] with expired token', async t => {
   const thirtyOneDays = new Date(new Date().getDate() - 31)
 
   await Token.tokenize(user.id)

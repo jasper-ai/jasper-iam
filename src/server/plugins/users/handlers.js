@@ -44,7 +44,7 @@ export async function getUsersHandler (req, reply) {
     const users = await User.collection().fetch()
 
     reply({
-      users: users.omit(['password', '_roles']),
+      users: users.map(u => u.omit(['password', '_roles'])),
       success: true,
       timestamp: Date.now()
     })

@@ -62,11 +62,11 @@ export async function authTokenHandler (req, reply) {
 
   try {
     const token: Token = await new Token({ cuid })
-      .fetch({ require: true, withRelated: ['users'] })
+      .fetch({ require: true, withRelated: ['user'] })
 
     await validateToken(token)
 
-    const user: User = token.related('users')
+    const user: User = token.related('user')
 
     reply({
       success: true,
