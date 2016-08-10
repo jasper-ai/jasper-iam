@@ -5,12 +5,18 @@ const defaultPlugins = [
 
   // metrics
   { register: require('jasper-hapi-healthcheck') },
-  { register: require('jasper-hapi-metrics') }
+  { register: require('jasper-hapi-metrics') },
+  { register: require('hapi-statsd') }
 ]
 
 const developmentPlugins = [
   // logging
   { register: require('hapi-pino') },
+
+  // documentation
+  { register: require('inert') },
+  { register: require('vision') },
+  { register: require('hapi-swagger') },
 
   // app
   { register: require('./plugins/auth') },

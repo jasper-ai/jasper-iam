@@ -1,7 +1,5 @@
 import test from 'ava'
 import hapi from 'hapi'
-// import jwt from 'jsonwebtoken'
-// import bcrypt from 'bcryptjs'
 
 import plugin from './index'
 import authPlugin from '../auth'
@@ -15,6 +13,7 @@ function loadPlugins (server) {
     server.register([
       require('hapi-auth-basic'),
       require('hapi-auth-jwt2'),
+      require('hapi-statsd'),
       authPlugin,
       plugin
     ], (error) => {
