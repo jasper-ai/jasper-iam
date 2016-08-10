@@ -71,7 +71,7 @@ async function jwt (
   }
 }
 
-export const register = (server, options, next) => {
+module.exports.register = (server, options, next) => {
   server.auth.strategy('basic', 'basic', { validateFunc: basic })
   server.auth.strategy('jwt', 'jwt', {
     key: process.env.SECRET || 'SECRET',
@@ -98,7 +98,7 @@ export const register = (server, options, next) => {
     },
     {
       method: 'POST',
-      path: '/auth/check/basic',
+      path: '/auth/basic',
       config: {
         tags: ['api'],
         auth: {
@@ -112,7 +112,7 @@ export const register = (server, options, next) => {
     },
     {
       method: 'POST',
-      path: '/auth/check/token',
+      path: '/auth/token',
       config: {
         tags: ['api'],
         auth: {
@@ -143,7 +143,7 @@ export const register = (server, options, next) => {
   next()
 }
 
-register.attributes = {
+module.exports.register.attributes = {
   name: 'auth',
   version: '1.0.0'
 }

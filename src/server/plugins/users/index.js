@@ -16,7 +16,7 @@ const userPostPayloadSchema = {
   password: Joi.string().regex(/[a-zA-Z0-9@-_]{3,30}/).required()
 }
 
-export const register = (server, options, next) => {
+module.exports.register = (server, options, next) => {
   server.route([
     {
       method: 'GET',
@@ -114,7 +114,7 @@ export const register = (server, options, next) => {
   next()
 }
 
-register.attributes = {
+module.exports.register.attributes = {
   name: 'users',
   version: '1.0.0'
 }
