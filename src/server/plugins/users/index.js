@@ -16,6 +16,8 @@ const userPostPayloadSchema = {
   password: Joi.string().regex(/[a-zA-Z0-9@-_]{3,30}/).required()
 }
 
+const SECOND: number = 1000
+
 module.exports.register = (server, options, next) => {
   server.route([
     {
@@ -25,6 +27,9 @@ module.exports.register = (server, options, next) => {
         tags: ['api'],
         auth: {
           scope: ['iam:users:read']
+        },
+        cache: {
+          expiresIn: 10 * SECOND
         },
         handler: getUsersHandler
       }
@@ -37,6 +42,9 @@ module.exports.register = (server, options, next) => {
         auth: {
           scope: ['iam:users:read']
         },
+        cache: {
+          expiresIn: 10 * SECOND
+        },
         handler: getUserHandler
       }
     },
@@ -47,6 +55,9 @@ module.exports.register = (server, options, next) => {
         tags: ['api'],
         auth: {
           scope: ['iam:users:write']
+        },
+        cache: {
+          expiresIn: 10 * SECOND
         },
         validate: {
           payload: userPostPayloadSchema
@@ -62,6 +73,9 @@ module.exports.register = (server, options, next) => {
         auth: {
           scope: ['iam:users:write']
         },
+        cache: {
+          expiresIn: 10 * SECOND
+        },
         handler: patchUserHandler
       }
     },
@@ -72,6 +86,9 @@ module.exports.register = (server, options, next) => {
         tags: ['api'],
         auth: {
           scope: ['iam:users:write']
+        },
+        cache: {
+          expiresIn: 10 * SECOND
         },
         handler: putUserHandler
       }
@@ -84,6 +101,9 @@ module.exports.register = (server, options, next) => {
         auth: {
           scope: ['iam:users:delete']
         },
+        cache: {
+          expiresIn: 10 * SECOND
+        },
         handler: deleteUserHandler
       }
     },
@@ -95,6 +115,9 @@ module.exports.register = (server, options, next) => {
         auth: {
           scope: ['iam:tokens:read']
         },
+        cache: {
+          expiresIn: 10 * SECOND
+        },
         handler: getUserTokensHandler
       }
     },
@@ -105,6 +128,9 @@ module.exports.register = (server, options, next) => {
         tags: ['api'],
         auth: {
           scope: ['iam:tokens:delete']
+        },
+        cache: {
+          expiresIn: 10 * SECOND
         },
         handler: deleteUserTokenHandler
       }
