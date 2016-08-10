@@ -15,6 +15,7 @@ function loadPlugins (server) {
     server.register([
       require('hapi-auth-basic'),
       require('hapi-auth-jwt2'),
+      require('hapi-statsd'),
       authPlugin,
       plugin
     ], (error) => {
