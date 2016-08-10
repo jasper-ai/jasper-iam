@@ -4,6 +4,11 @@ import serverConfig from './config'
 
 export function getServer () {
   const server = new Hapi.Server({
+    cache: {
+      engine: require('catbox-redis'),
+      host: process.env.REDIS_HOST,
+      partition: process.env.REDIS_PARTITION
+    },
     connections: {
       routes: {
         cors: true

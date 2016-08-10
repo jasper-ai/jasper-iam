@@ -28,6 +28,8 @@ const resetPasswordPayloadSchema = {
   url: Joi.string().required()
 }
 
+const SECOND = 1000
+
 // validate function for basic auth plugin
 async function basic (
   request: Object,
@@ -90,6 +92,9 @@ module.exports.register = (server, options, next) => {
         auth: {
           scope: ['iam:pwreset']
         },
+        cache: {
+          expiresIn: 10 * SECOND
+        },
         validate: {
           payload: resetPasswordPayloadSchema
         },
@@ -103,6 +108,9 @@ module.exports.register = (server, options, next) => {
         tags: ['api'],
         auth: {
           scope: ['iam:auth:check']
+        },
+        cache: {
+          expiresIn: 10 * SECOND
         },
         validate: {
           payload: authBasicPayloadSchema
@@ -121,6 +129,9 @@ module.exports.register = (server, options, next) => {
         validate: {
           payload: authTokenPayloadSchema
         },
+        cache: {
+          expiresIn: 10 * SECOND
+        },
         handler: authTokenHandler
       }
     },
@@ -131,6 +142,9 @@ module.exports.register = (server, options, next) => {
         tags: ['api'],
         auth: {
           scope: ['iam:authenticate']
+        },
+        cache: {
+          expiresIn: 10 * SECOND
         },
         validate: {
           payload: authBasicPayloadSchema
