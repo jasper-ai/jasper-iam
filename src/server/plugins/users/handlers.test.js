@@ -1,7 +1,5 @@
 import test from 'ava'
 import hapi from 'hapi'
-// import jwt from 'jsonwebtoken'
-// import bcrypt from 'bcryptjs'
 
 import plugin from './index'
 import authPlugin from '../auth'
