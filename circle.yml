@@ -35,7 +35,7 @@ test:
         --env CODECOV_TOKEN=$CODECOV_TOKEN \
         jasperai/jasper-iam:$CIRCLE_SHA1 npm run test:coverage
     - |
-      docker run -d \
+      docker run \
         -p 3000:3000 \
         --net=host \
         --env PORT=$PORT \
