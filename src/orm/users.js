@@ -47,7 +47,7 @@ function hashPassword (password: string): Promise {
           return
         }
 
-        resolve(null, hash)
+        resolve(hash)
       })
     })
   })
@@ -57,6 +57,10 @@ const config = {
   tableName: 'users',
 
   hasTimestamps: true,
+
+  defaults: {
+    active: true
+  },
 
   virtuals: {
     roles: {
@@ -71,8 +75,7 @@ const config = {
   },
 
   activeTokens () {
-    const today = new Date()
-    const thirtyDays = new Date().setDate(today.getDate() - 30)
+    const thirtyDays = new Date(new Date().getDate() - 30)
 
     return this.hasMany('Token')
       .query(queryBuilder =>
@@ -82,8 +85,7 @@ const config = {
   },
 
   inactiveTokens () {
-    const today = new Date()
-    const thirtyDays = new Date().setDate(today.getDate() - 30)
+    const thirtyDays = new Date(new Date().getDate() - 30)
 
     return this.hasMany('Token')
       .query(queryBuilder =>
@@ -105,7 +107,8 @@ const config = {
 const statics = {
   hashPassword,
   authenticate (email: string, password: string) {
-    return new this({ email, active: true })
+    return new this()
+      .where({ email, active: true })
       .fetch({ require: true })
       .then(user => comparePassword(password, user))
   }

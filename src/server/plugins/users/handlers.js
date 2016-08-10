@@ -41,9 +41,7 @@ export async function getUserHandler (req, reply) {
 
 export async function getUsersHandler (req, reply) {
   try {
-    const users = await User.collection()
-      .query({ where: { active: true } })
-      .fetch()
+    const users = await User.collection().fetch()
 
     reply({
       users: users.omit(['password', '_roles']),
@@ -64,7 +62,8 @@ export async function getUserTokensHandler (req, reply) {
   const { id } = req.params
 
   try {
-    const user = await new User({ id, active: true })
+    const user = await new User()
+      .where({ id, active: true })
       .fetch({ require: true, withRelated: ['tokens'] })
     const tokens = await user.related('tokens')
 
@@ -88,7 +87,8 @@ export async function deleteUserTokenHandler (req, reply) {
   const { id, tokenId } = req.params
 
   try {
-    const user = new User({ id, active: true })
+    const user = new User()
+      .where({ id, active: true })
       .fetch({ require: true })
     const token = user.tokens()
       .query({ where: { id: tokenId } })
@@ -133,7 +133,9 @@ export async function patchUserHandler (req, reply) {
   const { id } = req.params
 
   try {
-    const user = await new User({ id, active: true }).fetch({ require: true })
+    const user = await new User()
+      .where({ id, active: true })
+      .fetch({ require: true })
     const updatedUser = await patchUser(user, req.payload)
 
     reply({
@@ -155,7 +157,9 @@ export async function putUserHandler (req, reply) {
   const { id } = req.params
 
   try {
-    const user = new User({ id, active: true }).fetch({ require: true })
+    const user = new User()
+      .where({ id, active: true })
+      .fetch({ require: true })
     const updatedUser = putUser(user, req.payload)
 
     reply({
@@ -177,7 +181,9 @@ export async function deleteUserHandler (req, reply) {
   const { id } = req.params
 
   try {
-    const user = new User({ id, active: true }).fetch({ require: true })
+    const user = new User()
+      .where({ id, active: true })
+      .fetch({ require: true })
     await deleteUser(user)
 
     reply({

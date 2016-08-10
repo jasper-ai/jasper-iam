@@ -8,15 +8,17 @@ const config = {
 
   hasTimestamps: true,
 
-  isExpired () {
-    const today = new Date()
-    const thirtyDays = new Date().setDate(today.getDate() - 30)
+  defaults: {
+    last_used: new Date()
+  },
 
+  isExpired () {
+    const thirtyDays = new Date(new Date().getDate() - 30)
     return this.get('last_used') < thirtyDays
   },
 
   user () {
-    return this.belongsTo('User').query({ where: { active: true } })
+    return this.belongsTo('User')
   },
 
   archive () {
@@ -31,7 +33,10 @@ const statics = {
     return new Promise((resolve, reject) => {
       this.forge({ cuid: unique, user_id: userId }).save()
         .then(token =>
-          jwt.sign({ cuid: token.get('cuid') }, process.env.SECRET || 'SECRET'))
+          jwt.sign({
+            cuid: token.get('cuid'),
+            user_id: token.get('user_id')
+          }, process.env.SECRET || 'SECRET'))
         .then(jwt => resolve(jwt))
         .catch(error => reject(error))
     })
